@@ -3,125 +3,272 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="About Morristown Eats"
-  description="Who runs this, why it exists, and how we decide what to write about. No ads, no pay-to-play, no chain-first coverage."
+  title="About"
+  description="What Morristown Eats is, how it works, and why it exists."
 >
+  <style>
+    .about-header {
+      padding: 5rem 0 3rem;
+      border-bottom: 3px solid var(--color-ink);
+    }
+    .about-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: var(--color-ink);
+      line-height: 1.1;
+      margin: 0.5rem 0 1.5rem;
+    }
+    .about-lede {
+      font-family: var(--font-body);
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--color-ink);
+      max-width: 600px;
+      font-style: italic;
+      border-left: 4px solid var(--color-rust);
+      padding-left: 1.5rem;
+      margin: 0;
+    }
+    .about-body {
+      max-width: 660px;
+      padding: 4rem 0 6rem;
+    }
+    .about-section {
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--color-paper-dark);
+    }
+    .about-section:last-child { border-bottom: none; }
+    .about-section h2 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      color: var(--color-ink);
+      margin-bottom: 1rem;
+    }
+    .about-section p {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--color-ink);
+      margin-bottom: 1rem;
+    }
+    .about-section p:last-child { margin-bottom: 0; }
+    .rules-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0 0;
+    }
+    .rules-list li {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--color-ink);
+      padding: 0.6rem 0 0.6rem 1.5rem;
+      border-bottom: 1px dashed var(--color-paper-dark);
+      position: relative;
+    }
+    .rules-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--color-rust);
+      font-family: var(--font-display);
+    }
+    .rules-list li:last-child { border-bottom: none; }
+    .ownership-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+    }
+    .ownership-table th {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-ink-muted);
+      text-align: left;
+      padding: 0.5rem 1rem 0.5rem 0;
+      border-bottom: 2px solid var(--color-ink);
+    }
+    .ownership-table td {
+      padding: 0.75rem 1rem 0.75rem 0;
+      border-bottom: 1px solid var(--color-paper-dark);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .ownership-table tr:last-child td { border-bottom: none; }
+    .tier-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      background: var(--color-paper-dark);
+      border: 1px solid var(--color-ink);
+      padding: 2px 6px;
+      white-space: nowrap;
+    }
+    .about-author {
+      background: var(--color-paper-dark);
+      border: 2px solid var(--color-ink);
+      box-shadow: 4px 4px 0 var(--color-ink);
+      padding: 2rem 2.5rem;
+      margin-top: 3rem;
+    }
+    .about-author p {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--color-ink);
+      margin-bottom: 0.75rem;
+    }
+    .about-author p:last-child { margin-bottom: 0; }
+    .about-author .sig {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--color-rust);
+    }
+    @media (max-width: 640px) {
+      .about-header { padding: 3rem 0 2rem; }
+      .about-body { padding: 2.5rem 0 4rem; }
+    }
+  </style>
 
-  <section class="page-section">
+  <div class="about-header">
     <div class="container">
-      <div style="max-width: 680px; margin: 0 auto;">
-
-        <div class="breadcrumb" style="margin-bottom: var(--space-6);">
-          <a href="/">Home</a>
-          <span class="breadcrumb-sep">→</span>
-          <span class="breadcrumb-current">About</span>
-        </div>
-
-        <h1 style="margin-bottom: var(--space-6);">About Morristown Eats</h1>
-
-        <p style="font-size: var(--text-lg); line-height: var(--leading-loose); color: var(--color-ink-light); margin-bottom: var(--space-8);">
-          Morristown has a real food scene. It doesn't have a real food guide. This is an attempt to fix that.
-        </p>
-
-        <hr class="divider" />
-
-        <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-5);">Who runs this</h2>
-        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-5);">
-          Morristown Eats is a one-person project. I'm a Morristown resident who eats out constantly,
-          knows this town's restaurant scene, and got tired of the available options — Yelp noise,
-          Tripadvisor nonsense, generic food blogs that haven't updated since 2019, and a local Instagram
-          account that runs spectacle events and charges restaurants for coverage.
-        </p>
-        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-8);">
-          I built this because the town deserves something better. Something specific, honest,
-          and written by someone who actually lives here.
-        </p>
-
-        <hr class="divider" />
-
-        <h2 id="methodology" style="font-size: var(--text-2xl); margin-bottom: var(--space-5);">Our methodology</h2>
-
-        <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3);">We visit first. We write second.</h3>
-        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-6);">
-          No restaurant profile goes live with editorial content until we've visited in person.
-          Some profiles are published as verified fact shells — address, hours, cuisine — while
-          the visit is pending. These are clearly marked. The editorial take, dish recommendations,
-          and ratings are only published after eating there.
-        </p>
-
-        <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3);">We pay for our own meals.</h3>
-        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-6);">
-          Always. No exceptions. We don't accept free meals, complimentary tastings, press events,
-          or any form of hosted visit. If a restaurant knows we're coming, that's a conflict.
-          We go as anonymous customers.
-        </p>
-
-        <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3);">No pay-to-play. Ever.</h3>
-        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-6);">
-          No restaurant pays for coverage, featured placement, or profile publication.
-          Advertising does not exist on this platform. There is no premium listing tier.
-          Coverage is earned by being worth covering, nothing else.
-          This rule is the entire competitive moat of this project and it will never change.
-        </p>
-
-        <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3);">Independent restaurants first.</h3>
-        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-6);">
-          The platform prioritizes independently owned and locally owned restaurants.
-          Regional chains with significant local roots can be listed and reviewed but are
-          clearly disclosed and are not eligible for our top awards tier.
-          National chains are not listed.
-        </p>
-
-        <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3);">How we rate restaurants</h3>
-        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-4);">
-          We use four dimensions, rated on a 1–10 editorial scale:
-        </p>
-        <ul style="list-style: none; margin-bottom: var(--space-6);">
-          {[
-            { label: 'Consistency', desc: 'Reliable quality across multiple visits — not just good on a lucky night.' },
-            { label: 'Distinctiveness', desc: 'Does something you can\'t easily get elsewhere in Morristown.' },
-            { label: 'Execution', desc: 'Technical skill in the kitchen — the food is made well.' },
-            { label: 'Local Relevance', desc: 'How central this restaurant is to Morristown\'s dining identity.' },
-          ].map(r => (
-            <li style="padding: var(--space-4) 0; border-bottom: 1px solid var(--color-border); display: grid; grid-template-columns: 160px 1fr; gap: var(--space-4);">
-              <span style="font-size: var(--text-sm); font-weight: 700; letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-ink);">{r.label}</span>
-              <span style="color: var(--color-ink-light); line-height: var(--leading-normal);">{r.desc}</span>
-            </li>
-          ))}
-        </ul>
-        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-8);">
-          There is no overall score. Ratings are editorial assessments, not averages of crowdsourced reviews.
-          A restaurant is not penalized for being a great pizza counter rather than a great date-night table —
-          it's rated on whether it does its thing well.
-        </p>
-
-        <hr class="divider" />
-
-        <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-5);">What this is not</h2>
-        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-4);">
-          Morristown Eats is not Yelp, Tripadvisor, or a comments platform.
-          There are no public reviews. There are no star ratings from strangers.
-          There is no way for anyone — restauranteur, competitor, or disgruntled customer — to
-          post negative content about a business.
-        </p>
-        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-8);">
-          This is an editorial project. One voice, one standard, one clear methodology.
-          If something is wrong, you can reach us directly.
-        </p>
-
-        <hr class="divider" />
-
-        <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-5);">Get in touch</h2>
-        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-4);">
-          Have a restaurant we should know about? Found an error? Want to talk?
-          We're on Substack. Reach us through the newsletter.
-        </p>
-        <a href="https://morristowneats.substack.com" target="_blank" rel="noopener" class="btn btn-dark">
-          Morristown Eats on Substack
-        </a>
-
-      </div>
+      <span class="label">About this project</span>
+      <h1>Morristown Eats</h1>
+      <p class="about-lede">
+        A personal restaurant guide to Morristown, NJ — built on honest visits,
+        independent judgment, and no financial relationships with anyone I cover.
+      </p>
     </div>
-  </section>
+  </div>
+
+  <div class="container">
+    <div class="about-body">
+
+      <div class="about-section">
+        <h2>Why this exists</h2>
+        <p>
+          Morristown has genuinely good restaurants. Salvadoran cooking with real range.
+          A bagel counter that's been running the same operation since before most residents
+          moved here. Greek-Mediterranean that holds its own. Vietnamese breakfast.
+          None of this is easy to find.
+        </p>
+        <p>
+          The problem isn't the food — it's the coverage. Yelp is noise: three-star reviews
+          from 2019 mixed in with fresh complaints about parking. Google surfaces whoever
+          paid for the placement. The local food coverage that does exist is mostly a press
+          release rewrite dressed as journalism, cycling the same downtown spots on rotation.
+        </p>
+        <p>
+          Nobody was doing the straightforward thing: visiting restaurants, eating the food,
+          paying their own check, and writing down what they actually thought.
+          So I started doing that.
+        </p>
+      </div>
+
+      <div class="about-section">
+        <h2>How I work</h2>
+        <p>
+          Every restaurant in this guide has been either personally visited or flagged
+          clearly as unvisited. When I visit, I go as a regular customer. I don't announce
+          myself. I pay my own bill.
+        </p>
+        <p>
+          Profiles go up when I've formed a real opinion — not before. Restaurants I've
+          confirmed are open and real but haven't eaten at yet appear in the database as
+          unvisited and get a full profile only after I've been there.
+        </p>
+        <p>
+          When I write, I'm asking a few simple questions: does this place do what it's
+          trying to do? Is there something specific worth ordering? Would I send a friend
+          here? A neighborhood diner running the same Saturday breakfast for thirty years
+          is more interesting to this guide than a well-funded opening that's been on
+          every food Instagram account in the state.
+        </p>
+      </div>
+
+      <div class="about-section">
+        <h2>Who appears here</h2>
+        <p>The guide covers restaurants in Morristown. Ownership matters — here's the framework:</p>
+        <table class="ownership-table">
+          <thead>
+            <tr>
+              <th>Tier</th>
+              <th>What it means</th>
+              <th>Coverage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tier-label">Independent</span></td>
+              <td>Privately owned, no institutional ownership or PE backing</td>
+              <td>Full editorial coverage</td>
+            </tr>
+            <tr>
+              <td><span class="tier-label">Local group</span></td>
+              <td>NJ-focused ownership, 3 or fewer locations</td>
+              <td>Full coverage, labeled</td>
+            </tr>
+            <tr>
+              <td><span class="tier-label">Regional</span></td>
+              <td>Broader footprint, still genuinely good</td>
+              <td>Awards categories only</td>
+            </tr>
+            <tr>
+              <td><span class="tier-label">National chain</span></td>
+              <td>Corporate ownership, wide footprint</td>
+              <td>Not covered</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin-top: 1.25rem;">
+          When ownership is ambiguous, I research it and say what I found.
+          The ownership tier is listed on every profile.
+        </p>
+      </div>
+
+      <div class="about-section">
+        <h2>No ratings. No stars.</h2>
+        <p>
+          I don't publish star ratings or aggregate scores. Numbers flatten context
+          and encourage comparison over discovery. A 4.2 doesn't tell you whether
+          to order the dumplings. A specific recommendation does.
+        </p>
+        <p>
+          What I publish instead is a judgment — what the place is good at,
+          what you should order, and what kind of occasion it's right for.
+          That's more useful than a number.
+        </p>
+      </div>
+
+      <div class="about-section">
+        <h2>No pay-to-play. No exceptions.</h2>
+        <p>
+          No restaurant has paid to be listed, rated, or featured. No restaurant
+          has paid for better placement, a faster profile, or favorable coverage.
+          This isn't unusual in principle — it's how restaurant journalism is
+          supposed to work. It's just not how most local food coverage actually works.
+        </p>
+        <p>
+          I intend to keep it this way indefinitely. If that ever changes, I'll say so clearly.
+        </p>
+      </div>
+
+      <div class="about-author">
+        <p>
+          I live in Morristown with my family. We eat out constantly — probably more
+          than we should. I've been eating around this town long enough to know what's
+          good, what used to be good, and what's getting better.
+        </p>
+        <p>
+          This is the guide I wanted to exist.
+        </p>
+        <p class="sig">— Matthew</p>
+      </div>
+
+    </div>
+  </div>
 
 </BaseLayout>
