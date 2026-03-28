@@ -44,9 +44,6 @@ const currentPath = Astro.url.pathname;
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="Morristown Eats" href="/rss.xml" />
 </head>
 
 <body>
@@ -94,24 +91,31 @@ const currentPath = Astro.url.pathname;
             <span class="wordmark-city">Morristown</span>
             <span class="wordmark-eats">Eats</span>
           </a>
-          <p class="footer-desc">
-            The independent restaurant guide to Morristown, NJ.<br />
+          <p class="footer-tagline">
+            The independent restaurant guide to Morristown, NJ.
             No ads. No pay-to-play. Visit first, write second.
           </p>
         </div>
         <nav aria-label="Footer navigation">
-          <ul class="footer-nav" role="list">
+          <span class="footer-col-heading">Navigate</span>
+          <ul class="footer-links" role="list">
             <li><a href="/restaurants">Restaurants</a></li>
             <li><a href="/awards">Awards</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/about#methodology">Methodology</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Footer links">
+          <span class="footer-col-heading">Follow</span>
+          <ul class="footer-links" role="list">
             <li><a href="https://morristowneats.substack.com" target="_blank" rel="noopener">Newsletter</a></li>
+            <li><a href="https://instagram.com/morristowneats" target="_blank" rel="noopener">Instagram</a></li>
           </ul>
         </nav>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 Morristown Eats. All rights reserved.</span>
-        <span>Independent. Honest. Local.</span>
+        <p>© 2026 Morristown Eats. Independent. Honest. Local.</p>
+        <span class="footer-stamp">No Pay-to-Play</span>
       </div>
     </div>
   </footer>

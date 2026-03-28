@@ -27,14 +27,13 @@ const {
   visit_status,
 } = Astro.props;
 
-// Format neighborhood for display
 const neighborhoodDisplay = neighborhood
   .split('-')
-  .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+  .map((w: string) => w.charAt(0).toUpperCase() + w.slice(1))
   .join(' ');
 
 const cuisineDisplay = cuisine
-  .map(c => c.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '))
+  .map((c: string) => c.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' '))
   .join(' · ');
 ---
 
@@ -67,11 +66,17 @@ const cuisineDisplay = cuisine
       <h3 class="card-name">{name}</h3>
       <p class="card-cuisine">{cuisineDisplay}</p>
       <p class="card-hook">"{one_liner}"</p>
-      {(ownership === 'local_group' || ownership === 'regional_chain') && (
-        <div class="card-tags">
-          <span class="tag badge-local-group">{ownership === 'local_group' ? 'Local group' : 'Regional'}</span>
-        </div>
-      )}
+      <div class="card-tags">
+        {ownership === 'local_group' && (
+          <span class="tag badge-local-group">Local group</span>
+        )}
+        {ownership === 'regional_chain' && (
+          <span class="tag badge-local-group">Regional</span>
+        )}
+        {visit_status === 'fact-shell' && (
+          <span class="tag" style="font-style:italic; opacity:0.65;">Unvisited</span>
+        )}
+      </div>
     </div>
   </a>
 </article>

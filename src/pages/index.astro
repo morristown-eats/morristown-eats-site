@@ -5,12 +5,10 @@ import RestaurantCard from '../components/RestaurantCard.astro';
 import neighborhoods from '../data/neighborhoods.json';
 
 const allRestaurants = await getCollection('restaurants', ({ data }) => data.published);
-allRestaurants.sort(() => Math.random() - 0.5); // shuffle for variety
+allRestaurants.sort(() => Math.random() - 0.5);
 
-// Featured: pick up to 6
 const featured = allRestaurants.slice(0, 6);
 
-// Count by neighborhood
 const neighborhoodsWithCount = neighborhoods.map(n => ({
   ...n,
   count: allRestaurants.filter(r => r.data.neighborhood === n.slug).length,
@@ -25,12 +23,15 @@ const neighborhoodsWithCount = neighborhoods.map(n => ({
   <section class="hero">
     <div class="container">
       <p class="hero-eyebrow">Morristown, New Jersey</p>
-      <h1>The independent restaurant guide to this town.</h1>
+      <h1>The independent<br/>restaurant guide<br/>to this town.</h1>
       <p class="hero-sub">
         No pay-to-play. No sponsored posts. No chain-first curation.
         Just restaurants worth your time, written by someone who lives here.
       </p>
-      <a href="/restaurants" class="btn btn-primary">Explore Restaurants</a>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+        <a href="/restaurants" class="btn btn-primary">Explore Restaurants</a>
+        <a href="/about" class="btn btn-outline">How this works</a>
+      </div>
     </div>
   </section>
 
@@ -42,7 +43,7 @@ const neighborhoodsWithCount = neighborhoods.map(n => ({
           <span class="label">Editor's Picks</span>
           <h2>Where to eat in Morristown</h2>
         </div>
-        <a href="/restaurants" class="btn btn-outline btn-sm">See all</a>
+        <a href="/restaurants" class="btn btn-outline btn-sm">See all →</a>
       </div>
 
       <div class="restaurant-grid">
@@ -64,13 +65,14 @@ const neighborhoodsWithCount = neighborhoods.map(n => ({
       </div>
     </div>
   </section>
+
   <!-- NEIGHBORHOODS -->
   <section class="page-section-alt">
     <div class="container">
       <div class="section-header">
         <div class="section-header-left">
-          <span class="label">Browse</span>
-          <h2>By neighborhood</h2>
+          <span class="label">Browse by neighborhood</span>
+          <h2>Where in town?</h2>
         </div>
       </div>
 
@@ -91,18 +93,18 @@ const neighborhoodsWithCount = neighborhoods.map(n => ({
     </div>
   </section>
 
-  <!-- WHAT THIS IS -->
+  <!-- WHY THIS EXISTS -->
   <section class="page-section">
     <div class="container">
-      <div style="max-width: 680px; margin: 0 auto; text-align: center;">
-        <span class="label" style="display:block; margin-bottom: 1rem;">Why this exists</span>
-        <h2 style="margin-bottom: 1.5rem;">Morristown has a real food scene. It deserves a real guide.</h2>
-        <p style="font-size: 1.125rem; color: var(--color-ink-light); line-height: 1.7; margin-bottom: 2rem;">
-          Yelp is noise. Google is algorithmic. The food blogs that cover this town either haven't visited in three years
-          or are running sponsored content. Morristown Eats is none of those things.
-          We pay for our own meals. We visit before we write. We cover independent restaurants first.
+      <div style="max-width: 640px; margin: 0 auto; text-align: center;">
+        <span class="label" style="display:block; margin-bottom:1rem;">Why this exists</span>
+        <h2 style="margin-bottom:1.5rem;">Morristown has a real food scene. It deserves a real guide.</h2>
+        <p style="font-family: var(--font-body); font-size: var(--text-base); line-height: 1.8; color: var(--color-ink-muted); margin-bottom: 2rem;">
+          Yelp is noise. Google is algorithmic. The food coverage out there is either three years stale
+          or running sponsored content. I pay for my own meals. I visit before I write.
+          I cover independent restaurants first. That's the whole deal.
         </p>
-        <a href="/about" class="btn btn-outline">Read our methodology</a>
+        <a href="/about" class="btn btn-outline">Read the methodology</a>
       </div>
     </div>
   </section>
@@ -110,7 +112,7 @@ const neighborhoodsWithCount = neighborhoods.map(n => ({
   <!-- AWARDS BAND -->
   <section class="awards-band">
     <div class="container">
-      <p class="label">Coming</p>
+      <p class="label">Coming soon</p>
       <h2>The Morristown Table Awards</h2>
       <p>
         The first annual celebration of Morristown's best independent restaurants.
