@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About Morristown Eats"
+  description="Who runs this, why it exists, and how we decide what to write about. No ads, no pay-to-play, no chain-first coverage."
+>
+
+  <section class="page-section">
+    <div class="container">
+      <div style="max-width: 680px; margin: 0 auto;">
+
+        <div class="breadcrumb" style="margin-bottom: var(--space-6);">
+          <a href="/">Home</a>
+          <span class="breadcrumb-sep">→</span>
+          <span class="breadcrumb-current">About</span>
+        </div>
+
+        <h1 style="margin-bottom: var(--space-6);">About Morristown Eats</h1>
+
+        <p style="font-size: var(--text-lg); line-height: var(--leading-loose); color: var(--color-ink-light); margin-bottom: var(--space-8);">
+          Morristown has a real food scene. It doesn't have a real food guide. This is an attempt to fix that.
+        </p>
+
+        <hr class="divider" />
+
+        <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-5);">Who runs this</h2>
+        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-5);">
+          Morristown Eats is a one-person project. I'm a Morristown resident who eats out constantly,
+          knows this town's restaurant scene, and got tired of the available options — Yelp noise,
+          Tripadvisor nonsense, generic food blogs that haven't updated since 2019, and a local Instagram
+          account that runs spectacle events and charges restaurants for coverage.
+        </p>
+        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-8);">
+          I built this because the town deserves something better. Something specific, honest,
+          and written by someone who actually lives here.
+        </p>
+
+        <hr class="divider" />
+
+        <h2 id="methodology" style="font-size: var(--text-2xl); margin-bottom: var(--space-5);">Our methodology</h2>
+
+        <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3);">We visit first. We write second.</h3>
+        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-6);">
+          No restaurant profile goes live with editorial content until we've visited in person.
+          Some profiles are published as verified fact shells — address, hours, cuisine — while
+          the visit is pending. These are clearly marked. The editorial take, dish recommendations,
+          and ratings are only published after eating there.
+        </p>
+
+        <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3);">We pay for our own meals.</h3>
+        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-6);">
+          Always. No exceptions. We don't accept free meals, complimentary tastings, press events,
+          or any form of hosted visit. If a restaurant knows we're coming, that's a conflict.
+          We go as anonymous customers.
+        </p>
+
+        <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3);">No pay-to-play. Ever.</h3>
+        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-6);">
+          No restaurant pays for coverage, featured placement, or profile publication.
+          Advertising does not exist on this platform. There is no premium listing tier.
+          Coverage is earned by being worth covering, nothing else.
+          This rule is the entire competitive moat of this project and it will never change.
+        </p>
+
+        <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3);">Independent restaurants first.</h3>
+        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-6);">
+          The platform prioritizes independently owned and locally owned restaurants.
+          Regional chains with significant local roots can be listed and reviewed but are
+          clearly disclosed and are not eligible for our top awards tier.
+          National chains are not listed.
+        </p>
+
+        <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3);">How we rate restaurants</h3>
+        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-4);">
+          We use four dimensions, rated on a 1–10 editorial scale:
+        </p>
+        <ul style="list-style: none; margin-bottom: var(--space-6);">
+          {[
+            { label: 'Consistency', desc: 'Reliable quality across multiple visits — not just good on a lucky night.' },
+            { label: 'Distinctiveness', desc: 'Does something you can\'t easily get elsewhere in Morristown.' },
+            { label: 'Execution', desc: 'Technical skill in the kitchen — the food is made well.' },
+            { label: 'Local Relevance', desc: 'How central this restaurant is to Morristown\'s dining identity.' },
+          ].map(r => (
+            <li style="padding: var(--space-4) 0; border-bottom: 1px solid var(--color-border); display: grid; grid-template-columns: 160px 1fr; gap: var(--space-4);">
+              <span style="font-size: var(--text-sm); font-weight: 700; letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-ink);">{r.label}</span>
+              <span style="color: var(--color-ink-light); line-height: var(--leading-normal);">{r.desc}</span>
+            </li>
+          ))}
+        </ul>
+        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-8);">
+          There is no overall score. Ratings are editorial assessments, not averages of crowdsourced reviews.
+          A restaurant is not penalized for being a great pizza counter rather than a great date-night table —
+          it's rated on whether it does its thing well.
+        </p>
+
+        <hr class="divider" />
+
+        <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-5);">What this is not</h2>
+        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-4);">
+          Morristown Eats is not Yelp, Tripadvisor, or a comments platform.
+          There are no public reviews. There are no star ratings from strangers.
+          There is no way for anyone — restauranteur, competitor, or disgruntled customer — to
+          post negative content about a business.
+        </p>
+        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-8);">
+          This is an editorial project. One voice, one standard, one clear methodology.
+          If something is wrong, you can reach us directly.
+        </p>
+
+        <hr class="divider" />
+
+        <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-5);">Get in touch</h2>
+        <p style="line-height: var(--leading-loose); margin-bottom: var(--space-4);">
+          Have a restaurant we should know about? Found an error? Want to talk?
+          We're on Substack. Reach us through the newsletter.
+        </p>
+        <a href="https://morristowneats.substack.com" target="_blank" rel="noopener" class="btn btn-dark">
+          Morristown Eats on Substack
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

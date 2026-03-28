@@ -1,0 +1,162 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RestaurantCard from '../../components/RestaurantCard.astro';
+import neighborhoods from '../../data/neighborhoods.json';
+import cuisines from '../../data/cuisines.json';
+
+const allRestaurants = await getCollection('restaurants', ({ data }) => data.published);
+
+// Get active filter from URL (for static filtered views)
+const url = Astro.url;
+const activeNeighborhood = url.searchParams.get('neighborhood') || '';
+const activeCuisine = url.searchParams.get('cuisine') || '';
+
+// Filtered list
+let filtered = [...allRestaurants];
+if (activeNeighborhood) {
+  filtered = filtered.filter(r => r.data.neighborhood === activeNeighborhood);
+}
+if (activeCuisine) {
+  filtered = filtered.filter(r => r.data.cuisine.includes(activeCuisine));
+}
+
+// Sort alphabetically by name
+filtered.sort((a, b) => a.data.name.localeCompare(b.data.name));
+
+// Group by neighborhood for the unfiltered view
+const grouped = neighborhoods.map(n => ({
+  neighborhood: n,
+  restaurants: filtered.filter(r => r.data.neighborhood === n.slug),
+})).filter(g => g.restaurants.length > 0);
+
+const activeNeighborhoodLabel = neighborhoods.find(n => n.slug === activeNeighborhood)?.label;
+const activeCuisineLabel = cuisines.find(c => c.slug === activeCuisine)?.label;
+
+const pageTitle = activeNeighborhoodLabel
+  ? `${activeNeighborhoodLabel} Restaurants`
+  : activeCuisineLabel
+  ? `${activeCuisineLabel} Restaurants`
+  : 'All Restaurants';
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={`Independent restaurants in Morristown, NJ. ${activeNeighborhoodLabel ? `Browsing: ${activeNeighborhoodLabel}.` : ''} No chains, no sponsors, no pay-to-play.`}
+>
+
+  <!-- Filter bar -->
+  <div class="filter-bar">
+    <div class="container">
+      <div class="filter-bar-inner">
+        <span class="filter-label">Filter:</span>
+
+        <a href="/restaurants" class={`chip ${!activeNeighborhood && !activeCuisine ? 'active' : ''}`}>
+          All
+        </a>
+
+        {neighborhoods.filter(n =>
+          allRestaurants.some(r => r.data.neighborhood === n.slug)
+        ).map(n => (
+          <a
+            href={`/restaurants?neighborhood=${n.slug}`}
+            class={`chip ${activeNeighborhood === n.slug ? 'active' : ''}`}
+          >
+            {n.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Page header -->
+  <section class="page-section" style="padding-bottom: 0;">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb-sep">→</span>
+        <span class="breadcrumb-current">Restaurants</span>
+        {activeNeighborhoodLabel && (
+          <>
+            <span class="breadcrumb-sep">→</span>
+            <span class="breadcrumb-current">{activeNeighborhoodLabel}</span>
+          </>
+        )}
+      </div>
+
+      <h1 style="margin-bottom: 0.5rem;">{pageTitle}</h1>
+      <p style="color: var(--color-ink-muted); font-size: var(--text-base); margin-bottom: 0;">
+        {filtered.length} {filtered.length === 1 ? 'restaurant' : 'restaurants'}
+        {activeNeighborhoodLabel ? ` in ${activeNeighborhoodLabel}` : ' in Morristown'}
+        {' · '}
+        <span style="color: var(--color-green); font-weight: 600;">Independent first.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="page-section">
+    <div class="container">
+      {(activeNeighborhood || activeCuisine) ? (
+        <!-- Filtered: flat grid -->
+        filtered.length > 0 ? (
+          <div class="restaurant-grid">
+            {filtered.map(r => (
+              <RestaurantCard
+                name={r.data.name}
+                slug={r.data.slug}
+                cuisine={r.data.cuisine}
+                neighborhood={r.data.neighborhood}
+                price={r.data.price}
+                byob={r.data.byob}
+                ownership={r.data.ownership}
+                one_liner={r.data.one_liner}
+                image={r.data.image}
+                image_alt={r.data.image_alt}
+              />
+            ))}
+          </div>
+        ) : (
+          <p style="color: var(--color-ink-muted);">No restaurants found for this filter.</p>
+        )
+      ) : (
+        <!-- Unfiltered: grouped by neighborhood -->
+        grouped.map(g => (
+          <div style="margin-bottom: var(--space-12);">
+            <div class="section-header">
+              <div class="section-header-left">
+                <span class="label">{g.restaurants.length} {g.restaurants.length === 1 ? 'place' : 'places'}</span>
+                <h2 style="font-size: var(--text-2xl);">{g.neighborhood.label}</h2>
+              </div>
+              <a href={`/restaurants?neighborhood=${g.neighborhood.slug}`} class="btn btn-outline btn-sm">
+                View all →
+              </a>
+            </div>
+            {g.neighborhood.description && (
+              <p style="color: var(--color-ink-muted); font-size: var(--text-sm); margin-bottom: var(--space-6); font-style: italic;">
+                {g.neighborhood.description}
+              </p>
+            )}
+            <div class="restaurant-grid">
+              {g.restaurants.map(r => (
+                <RestaurantCard
+                  name={r.data.name}
+                  slug={r.data.slug}
+                  cuisine={r.data.cuisine}
+                  neighborhood={r.data.neighborhood}
+                  price={r.data.price}
+                  byob={r.data.byob}
+                  ownership={r.data.ownership}
+                  one_liner={r.data.one_liner}
+                  image={r.data.image}
+                  image_alt={r.data.image_alt}
+                />
+              ))}
+            </div>
+          </div>
+        ))
+      )}
+    </div>
+  </section>
+
+</BaseLayout>

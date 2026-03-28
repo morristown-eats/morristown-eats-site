@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "south-street",
+    "label": "South Street",
+    "description": "The stretch of South St south of the Green — walkable, BYOB-heavy, where locals actually eat on weeknights.",
+    "count": 0
+  },
+  {
+    "slug": "the-green",
+    "label": "The Green",
+    "description": "Morristown's central square and the blocks surrounding Park Place — civic, lively, a mix of casual and upscale.",
+    "count": 0
+  },
+  {
+    "slug": "speedwell",
+    "label": "Speedwell Ave",
+    "description": "The Speedwell corridor — diverse, underrated, where you'll find some of the best independent cooking in town.",
+    "count": 0
+  },
+  {
+    "slug": "washington-street",
+    "label": "Washington Street",
+    "description": "Washington St runs parallel to the Green — bars, late-night options, and a few long-standing neighborhood spots.",
+    "count": 0
+  },
+  {
+    "slug": "morris-street",
+    "label": "Morris Street",
+    "description": "Morris St connects Washington to the train station — a mix of dining, a few late-night spots, and neighborhood staples.",
+    "count": 0
+  },
+  {
+    "slug": "headquarters-plaza",
+    "label": "HQ Plaza",
+    "description": "The Headquarters Plaza complex on Speedwell — a cluster of restaurants in the heart of the downtown office district.",
+    "count": 0
+  }
+]

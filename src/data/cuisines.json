@@ -1,0 +1,19 @@
+[
+  { "slug": "new-american", "label": "New American" },
+  { "slug": "italian", "label": "Italian" },
+  { "slug": "japanese", "label": "Japanese" },
+  { "slug": "sushi", "label": "Sushi" },
+  { "slug": "mexican", "label": "Mexican" },
+  { "slug": "persian", "label": "Persian" },
+  { "slug": "greek-mediterranean", "label": "Greek / Mediterranean" },
+  { "slug": "salvadoran", "label": "Salvadoran" },
+  { "slug": "eastern-european", "label": "Eastern European" },
+  { "slug": "pizza", "label": "Pizza" },
+  { "slug": "bakery-pastry", "label": "Bakery" },
+  { "slug": "cafe-coffee", "label": "Café" },
+  { "slug": "deli-bagels", "label": "Deli / Bagels" },
+  { "slug": "diner", "label": "Diner" },
+  { "slug": "taiwanese", "label": "Taiwanese" },
+  { "slug": "ice-cream", "label": "Ice Cream" },
+  { "slug": "pub-american", "label": "Pub / Bar" }
+]

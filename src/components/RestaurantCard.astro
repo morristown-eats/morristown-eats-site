@@ -1,0 +1,77 @@
+---
+interface Props {
+  name: string;
+  slug: string;
+  cuisine: string[];
+  neighborhood: string;
+  price: string;
+  byob?: boolean;
+  ownership?: string;
+  one_liner: string;
+  image?: string;
+  image_alt?: string;
+  visit_status?: string;
+}
+
+const {
+  name,
+  slug,
+  cuisine,
+  neighborhood,
+  price,
+  byob = false,
+  ownership = 'independent',
+  one_liner,
+  image,
+  image_alt,
+  visit_status,
+} = Astro.props;
+
+// Format neighborhood for display
+const neighborhoodDisplay = neighborhood
+  .split('-')
+  .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+  .join(' ');
+
+const cuisineDisplay = cuisine
+  .map(c => c.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '))
+  .join(' · ');
+---
+
+<article class="restaurant-card">
+  <a href={`/restaurants/${slug}`}>
+    <div class="card-image">
+      {image ? (
+        <img
+          src={image}
+          alt={image_alt || `${name} — ${neighborhoodDisplay}`}
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <div class="card-image-placeholder">{neighborhoodDisplay}</div>
+      )}
+    </div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span>{neighborhoodDisplay}</span>
+        <span class="card-meta-sep">·</span>
+        <span class="price">{price}</span>
+        {byob && (
+          <>
+            <span class="card-meta-sep">·</span>
+            <span>BYOB</span>
+          </>
+        )}
+      </div>
+      <h3 class="card-name">{name}</h3>
+      <p class="card-cuisine">{cuisineDisplay}</p>
+      <p class="card-hook">"{one_liner}"</p>
+      {(ownership === 'local_group' || ownership === 'regional_chain') && (
+        <div class="card-tags">
+          <span class="tag badge-local-group">{ownership === 'local_group' ? 'Local group' : 'Regional'}</span>
+        </div>
+      )}
+    </div>
+  </a>
+</article>

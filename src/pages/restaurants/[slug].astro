@@ -1,0 +1,370 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RatingBar from '../../components/RatingBar.astro';
+import RestaurantCard from '../../components/RestaurantCard.astro';
+
+export async function getStaticPaths() {
+  const restaurants = await getCollection('restaurants', ({ data }) => data.published);
+  return restaurants.map(r => ({
+    params: { slug: r.data.slug },
+    props: { restaurant: r },
+  }));
+}
+
+const { restaurant } = Astro.props;
+const { data, body } = restaurant;
+const { Content } = await restaurant.render();
+
+// Related restaurants: same neighborhood, excluding this one
+const allRestaurants = await getCollection('restaurants', ({ data }) => data.published);
+const related = allRestaurants
+  .filter(r => r.data.neighborhood === data.neighborhood && r.data.slug !== data.slug)
+  .slice(0, 3);
+
+// Format neighborhood label
+const neighborhoodLabel = data.neighborhood
+  .split('-')
+  .map((w: string) => w.charAt(0).toUpperCase() + w.slice(1))
+  .join(' ');
+
+const cuisineLabel = data.cuisine
+  .map((c: string) => c.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' '))
+  .join(', ');
+
+const hasRatings = data.ratings &&
+  (data.ratings.consistency || data.ratings.distinctiveness ||
+   data.ratings.execution || data.ratings.local_relevance);
+
+const hasDishes = data.dishes && data.dishes.length > 0;
+const hasAwards = data.awards && data.awards.length > 0;
+---
+
+<BaseLayout
+  title={data.name}
+  description={data.one_liner}
+>
+
+  <!-- Breadcrumb -->
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="breadcrumb-sep">→</span>
+      <a href="/restaurants">Restaurants</a>
+      <span class="breadcrumb-sep">→</span>
+      <a href={`/restaurants?neighborhood=${data.neighborhood}`}>{neighborhoodLabel}</a>
+      <span class="breadcrumb-sep">→</span>
+      <span class="breadcrumb-current">{data.name}</span>
+    </nav>
+  </div>
+
+  <!-- Title block + sidebar -->
+  <section class="page-section" style="padding-top: var(--space-8);">
+    <div class="container">
+      <div class="profile-grid">
+
+        <!-- Main content -->
+        <div>
+          <!-- Badges -->
+          <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-5);">
+            {data.ownership === 'independent' && (
+              <span class="badge badge-independent">Independent</span>
+            )}
+            {data.ownership === 'local_group' && (
+              <span class="badge badge-local-group">Local Group</span>
+            )}
+            {data.byob && (
+              <span class="badge badge-byob">BYOB</span>
+            )}
+            {hasAwards && data.awards.map((award: any) => (
+              <span class="badge badge-gold-table">{award.name} {award.year}</span>
+            ))}
+          </div>
+
+          <!-- Name -->
+          <h1 style="margin-bottom: var(--space-3);">{data.name}</h1>
+
+          <!-- Meta line -->
+          <p style="font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-ink-muted); margin-bottom: var(--space-5);">
+            {neighborhoodLabel}
+            {' · '}
+            <span class="price">{data.price}</span>
+            {' · '}
+            {cuisineLabel}
+            {data.byob ? ' · BYOB' : ''}
+          </p>
+
+          <!-- One-liner -->
+          <p style="font-size: var(--text-lg); font-style: italic; color: var(--color-ink-light); line-height: var(--leading-normal); max-width: 600px; border-left: 3px solid var(--color-accent); padding-left: var(--space-5); margin-bottom: 0;">
+            "{data.one_liner}"
+          </p>
+        </div>
+
+        <!-- Sidebar: Quick facts -->
+        <div>
+          <div class="quick-facts">
+            <p class="quick-facts-title">Quick Facts</p>
+
+            <div class="fact-row">
+              <span class="fact-label">Cuisine</span>
+              <span class="fact-value">{cuisineLabel}</span>
+            </div>
+
+            <div class="fact-row">
+              <span class="fact-label">Price</span>
+              <span class="fact-value">{data.price}</span>
+            </div>
+
+            <div class="fact-row">
+              <span class="fact-label">BYOB</span>
+              <span class="fact-value">{data.byob ? 'Yes' : 'No'}</span>
+            </div>
+
+            {data.outdoor_seating && (
+              <div class="fact-row">
+                <span class="fact-label">Patio</span>
+                <span class="fact-value">Outdoor seating available</span>
+              </div>
+            )}
+
+            {data.reservations && data.reservations !== 'walk-in' && data.reservations !== 'none' && (
+              <div class="fact-row">
+                <span class="fact-label">Reservations</span>
+                <span class="fact-value">
+                  {data.reservations === 'opentable' && (
+                    <a href={`https://www.opentable.com/s?term=${encodeURIComponent(data.name + ' Morristown')}`} target="_blank" rel="noopener">OpenTable ↗</a>
+                  )}
+                  {data.reservations === 'phone' && 'Call ahead'}
+                  {data.reservations === 'resy' && 'Resy'}
+                </span>
+              </div>
+            )}
+
+            {data.reservations === 'walk-in' && (
+              <div class="fact-row">
+                <span class="fact-label">Reservations</span>
+                <span class="fact-value">Walk-in only</span>
+              </div>
+            )}
+
+            {data.address && (
+              <div class="fact-row">
+                <span class="fact-label">Address</span>
+                <span class="fact-value">
+                  <a href={`https://maps.google.com/?q=${encodeURIComponent(data.address)}`} target="_blank" rel="noopener">
+                    {data.address} ↗
+                  </a>
+                </span>
+              </div>
+            )}
+
+            {data.phone && (
+              <div class="fact-row">
+                <span class="fact-label">Phone</span>
+                <span class="fact-value">
+                  <a href={`tel:${data.phone.replace(/\D/g,'')}`}>{data.phone}</a>
+                </span>
+              </div>
+            )}
+
+            {data.website && (
+              <div class="fact-row">
+                <span class="fact-label">Website</span>
+                <span class="fact-value">
+                  <a href={data.website} target="_blank" rel="noopener">
+                    {new URL(data.website).hostname.replace('www.','')} ↗
+                  </a>
+                </span>
+              </div>
+            )}
+
+            {data.good_for && data.good_for.length > 0 && (
+              <div class="fact-row">
+                <span class="fact-label">Good for</span>
+                <span class="fact-value" style="display: flex; flex-wrap: wrap; gap: 0.25rem;">
+                  {data.good_for.map((tag: string) => (
+                    <span class="tag">{tag.replace(/-/g,' ')}</span>
+                  ))}
+                </span>
+              </div>
+            )}
+          </div>
+
+          <!-- Hours (if available) -->
+          {data.hours && Object.keys(data.hours).length > 0 && (
+            <div class="quick-facts" style="margin-top: var(--space-4);">
+              <p class="quick-facts-title">Hours</p>
+              {Object.entries(data.hours).map(([day, hours]) => (
+                <div class="fact-row" style="padding: var(--space-2) 0;">
+                  <span class="fact-label">{day.charAt(0).toUpperCase() + day.slice(1)}</span>
+                  <span class="fact-value" style={hours === 'CLOSED' ? 'color: var(--color-ink-muted);' : ''}>{hours as string}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" style="margin: 0;" />
+
+  <!-- What to Order -->
+  {hasDishes && (
+    <section class="page-section">
+      <div class="container">
+        <div style="max-width: 720px;">
+          <span class="label" style="display: block; margin-bottom: var(--space-5);">What to Order</span>
+          <ul class="dish-list">
+            {data.dishes.map((dish: any) => (
+              <li class="dish-item">
+                <span class="dish-star" aria-hidden="true">★</span>
+                <div>
+                  <p class="dish-name">{dish.name}</p>
+                  <p class="dish-take">"{dish.take}"</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Our Take / Editorial prose -->
+  <section class="page-section" style={hasDishes ? 'padding-top: 0;' : ''}>
+    <div class="container">
+      <div style="max-width: 720px;">
+        <span class="label" style="display: block; margin-bottom: var(--space-5);">Our Take</span>
+
+        {data.visit_status === 'pending' || data.visit_status === 'fact-shell' ? (
+          <div class="profile-pending">
+            <strong>Visit pending</strong>
+            Full editorial review and dish recommendations will be published after our visit.
+            The facts above have been verified.
+          </div>
+        ) : null}
+
+        <div class="prose" style={data.visit_status !== 'visited' ? 'margin-top: var(--space-6);' : ''}>
+          <Content />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ratings -->
+  {hasRatings && (
+    <>
+      <hr class="divider" style="margin: 0;" />
+      <section class="page-section">
+        <div class="container">
+          <div style="max-width: 720px;">
+            <span class="label" style="display: block; margin-bottom: var(--space-6);">How We Rate It</span>
+            <div class="ratings-grid">
+              {data.ratings?.consistency && (
+                <RatingBar
+                  label="Consistency"
+                  score={data.ratings.consistency}
+                  description="Reliable quality across visits — not just good on a lucky night."
+                />
+              )}
+              {data.ratings?.distinctiveness && (
+                <RatingBar
+                  label="Distinctiveness"
+                  score={data.ratings.distinctiveness}
+                  description="Does something you can't easily get elsewhere in Morristown."
+                />
+              )}
+              {data.ratings?.execution && (
+                <RatingBar
+                  label="Execution"
+                  score={data.ratings.execution}
+                  description="Technical skill in the kitchen — the food is made well."
+                />
+              )}
+              {data.ratings?.local_relevance && (
+                <RatingBar
+                  label="Local Relevance"
+                  score={data.ratings.local_relevance}
+                  description="How central this restaurant is to Morristown's dining identity."
+                />
+              )}
+            </div>
+            <p style="font-size: var(--text-xs); color: var(--color-ink-muted); margin-top: var(--space-5); font-style: italic;">
+              Ratings are editorial assessments, not crowdsourced scores. <a href="/about#methodology">Read our methodology →</a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </>
+  )}
+
+  <!-- Practical info -->
+  {(data.parking || data.noise_level || data.wait_times) && (
+    <>
+      <hr class="divider" style="margin: 0;" />
+      <section class="page-section">
+        <div class="container">
+          <div style="max-width: 720px;">
+            <span class="label" style="display: block; margin-bottom: var(--space-5);">Know Before You Go</span>
+            <div>
+              {data.parking && (
+                <div class="fact-row" style="border-color: var(--color-border);">
+                  <span class="fact-label">Parking</span>
+                  <span class="fact-value">{data.parking}</span>
+                </div>
+              )}
+              {data.noise_level && (
+                <div class="fact-row" style="border-color: var(--color-border);">
+                  <span class="fact-label">Noise level</span>
+                  <span class="fact-value">{data.noise_level}</span>
+                </div>
+              )}
+              {data.wait_times && (
+                <div class="fact-row" style="border-color: var(--color-border);">
+                  <span class="fact-label">Wait times</span>
+                  <span class="fact-value">{data.wait_times}</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  )}
+
+  <!-- Related restaurants -->
+  {related.length > 0 && (
+    <>
+      <hr class="divider" style="margin: 0;" />
+      <section class="page-section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-header-left">
+              <span class="label">Also in {neighborhoodLabel}</span>
+              <h2 style="font-size: var(--text-2xl);">More nearby</h2>
+            </div>
+          </div>
+          <div class="restaurant-grid">
+            {related.map(r => (
+              <RestaurantCard
+                name={r.data.name}
+                slug={r.data.slug}
+                cuisine={r.data.cuisine}
+                neighborhood={r.data.neighborhood}
+                price={r.data.price}
+                byob={r.data.byob}
+                ownership={r.data.ownership}
+                one_liner={r.data.one_liner}
+                image={r.data.image}
+                image_alt={r.data.image_alt}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  )}
+
+</BaseLayout>

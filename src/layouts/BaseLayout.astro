@@ -1,0 +1,129 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title = 'Morristown Eats',
+  description = 'The independent restaurant guide to Morristown, NJ. No ads. No pay-to-play. Visit first, write second.',
+  ogImage = '/images/og-default.jpg',
+  canonicalURL = Astro.url.href,
+} = Astro.props;
+
+const fullTitle = title === 'Morristown Eats' ? title : `${title} — Morristown Eats`;
+const currentPath = Astro.url.pathname;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:site_name" content="Morristown Eats" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="Morristown Eats" href="/rss.xml" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a href="/" class="wordmark" aria-label="Morristown Eats — Home">
+        <span class="wordmark-city">Morristown</span>
+        <span class="wordmark-eats">Eats</span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <rect y="4" width="22" height="2" fill="currentColor"/>
+          <rect y="10" width="22" height="2" fill="currentColor"/>
+          <rect y="16" width="22" height="2" fill="currentColor"/>
+        </svg>
+      </button>
+
+      <nav aria-label="Main navigation">
+        <ul class="site-nav" id="siteNav" role="list">
+          <li><a href="/restaurants" aria-current={currentPath.startsWith('/restaurants') ? 'page' : undefined}>Restaurants</a></li>
+          <li><a href="/awards" aria-current={currentPath.startsWith('/awards') ? 'page' : undefined}>Awards</a></li>
+          <li><a href="/about" aria-current={currentPath === '/about' ? 'page' : undefined}>About</a></li>
+          <li>
+            <a href="https://morristowneats.substack.com" target="_blank" rel="noopener" class="btn btn-dark btn-sm">
+              Subscribe
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="/" class="wordmark" aria-label="Morristown Eats">
+            <span class="wordmark-city">Morristown</span>
+            <span class="wordmark-eats">Eats</span>
+          </a>
+          <p class="footer-desc">
+            The independent restaurant guide to Morristown, NJ.<br />
+            No ads. No pay-to-play. Visit first, write second.
+          </p>
+        </div>
+        <nav aria-label="Footer navigation">
+          <ul class="footer-nav" role="list">
+            <li><a href="/restaurants">Restaurants</a></li>
+            <li><a href="/awards">Awards</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/about#methodology">Methodology</a></li>
+            <li><a href="https://morristowneats.substack.com" target="_blank" rel="noopener">Newsletter</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Morristown Eats. All rights reserved.</span>
+        <span>Independent. Honest. Local.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile nav toggle -->
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const nav = document.getElementById('siteNav');
+    toggle?.addEventListener('click', () => {
+      const open = nav?.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  </script>
+</body>
+</html>

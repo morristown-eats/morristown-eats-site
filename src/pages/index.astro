@@ -1,0 +1,125 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RestaurantCard from '../components/RestaurantCard.astro';
+import neighborhoods from '../data/neighborhoods.json';
+
+const allRestaurants = await getCollection('restaurants', ({ data }) => data.published);
+allRestaurants.sort(() => Math.random() - 0.5); // shuffle for variety
+
+// Featured: pick up to 6
+const featured = allRestaurants.slice(0, 6);
+
+// Count by neighborhood
+const neighborhoodsWithCount = neighborhoods.map(n => ({
+  ...n,
+  count: allRestaurants.filter(r => r.data.neighborhood === n.slug).length,
+})).filter(n => n.count > 0);
+---
+
+<BaseLayout
+  title="Morristown Eats"
+  description="The independent restaurant guide to Morristown, NJ. No ads. No pay-to-play. Visit first, write second."
+>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <p class="hero-eyebrow">Morristown, New Jersey</p>
+      <h1>The independent restaurant guide to this town.</h1>
+      <p class="hero-sub">
+        No pay-to-play. No sponsored posts. No chain-first curation.
+        Just restaurants worth your time, written by someone who lives here.
+      </p>
+      <a href="/restaurants" class="btn btn-primary">Explore Restaurants</a>
+    </div>
+  </section>
+
+  <!-- EDITOR'S PICKS -->
+  <section class="page-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header-left">
+          <span class="label">Editor's Picks</span>
+          <h2>Where to eat in Morristown</h2>
+        </div>
+        <a href="/restaurants" class="btn btn-outline btn-sm">See all</a>
+      </div>
+
+      <div class="restaurant-grid">
+        {featured.map(r => (
+          <RestaurantCard
+            name={r.data.name}
+            slug={r.data.slug}
+            cuisine={r.data.cuisine}
+            neighborhood={r.data.neighborhood}
+            price={r.data.price}
+            byob={r.data.byob}
+            ownership={r.data.ownership}
+            one_liner={r.data.one_liner}
+            image={r.data.image}
+            image_alt={r.data.image_alt}
+            visit_status={r.data.visit_status}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- NEIGHBORHOODS -->
+  <section class="page-section-alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header-left">
+          <span class="label">Browse</span>
+          <h2>By neighborhood</h2>
+        </div>
+      </div>
+
+      <div class="neighborhood-grid">
+        {neighborhoodsWithCount.map(n => (
+          <a
+            href={`/restaurants?neighborhood=${n.slug}`}
+            class="neighborhood-block"
+            aria-label={`${n.label} — ${n.count} restaurants`}
+          >
+            <div>
+              <p class="neighborhood-name">{n.label}</p>
+              <p class="neighborhood-count">{n.count} {n.count === 1 ? 'place' : 'places'}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT THIS IS -->
+  <section class="page-section">
+    <div class="container">
+      <div style="max-width: 680px; margin: 0 auto; text-align: center;">
+        <span class="label" style="display:block; margin-bottom: 1rem;">Why this exists</span>
+        <h2 style="margin-bottom: 1.5rem;">Morristown has a real food scene. It deserves a real guide.</h2>
+        <p style="font-size: 1.125rem; color: var(--color-ink-light); line-height: 1.7; margin-bottom: 2rem;">
+          Yelp is noise. Google is algorithmic. The food blogs that cover this town either haven't visited in three years
+          or are running sponsored content. Morristown Eats is none of those things.
+          We pay for our own meals. We visit before we write. We cover independent restaurants first.
+        </p>
+        <a href="/about" class="btn btn-outline">Read our methodology</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS BAND -->
+  <section class="awards-band">
+    <div class="container">
+      <p class="label">Coming</p>
+      <h2>The Morristown Table Awards</h2>
+      <p>
+        The first annual celebration of Morristown's best independent restaurants.
+        Judged by residents. Recognized on the Green.
+      </p>
+      <a href="/awards" class="btn btn-primary">Learn about the awards</a>
+    </div>
+  </section>
+
+</BaseLayout>
