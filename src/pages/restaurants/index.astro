@@ -26,8 +26,7 @@ filtered.sort((a, b) => a.data.name.localeCompare(b.data.name));
 
 // Group by neighborhood for the unfiltered view
 const grouped = neighborhoods.map(n => ({
-  neighborhood: n,
-  restaurants: filtered.filter(r => r.data.neighborhood === n.slug),
+  neighborhood: n,  restaurants: filtered.filter(r => r.data.neighborhood === n.slug),
 })).filter(g => g.restaurants.length > 0);
 
 const activeNeighborhoodLabel = neighborhoods.find(n => n.slug === activeNeighborhood)?.label;
@@ -54,7 +53,6 @@ const pageTitle = activeNeighborhoodLabel
         <a href="/restaurants" class={`chip ${!activeNeighborhood && !activeCuisine ? 'active' : ''}`}>
           All
         </a>
-
         {neighborhoods.filter(n =>
           allRestaurants.some(r => r.data.neighborhood === n.slug)
         ).map(n => (
@@ -83,7 +81,6 @@ const pageTitle = activeNeighborhoodLabel
           </>
         )}
       </div>
-
       <h1 style="margin-bottom: 0.5rem;">{pageTitle}</h1>
       <p style="color: var(--color-ink-muted); font-size: var(--text-base); margin-bottom: 0;">
         {filtered.length} {filtered.length === 1 ? 'restaurant' : 'restaurants'}
@@ -98,7 +95,6 @@ const pageTitle = activeNeighborhoodLabel
   <section class="page-section">
     <div class="container">
       {(activeNeighborhood || activeCuisine) ? (
-        <!-- Filtered: flat grid -->
         filtered.length > 0 ? (
           <div class="restaurant-grid">
             {filtered.map(r => (
@@ -112,15 +108,13 @@ const pageTitle = activeNeighborhoodLabel
                 ownership={r.data.ownership}
                 one_liner={r.data.one_liner}
                 image={r.data.image}
-                image_alt={r.data.image_alt}
-              />
+                image_alt={r.data.image_alt}              />
             ))}
           </div>
         ) : (
           <p style="color: var(--color-ink-muted);">No restaurants found for this filter.</p>
         )
       ) : (
-        <!-- Unfiltered: grouped by neighborhood -->
         grouped.map(g => (
           <div style="margin-bottom: var(--space-12);">
             <div class="section-header">
@@ -142,8 +136,7 @@ const pageTitle = activeNeighborhoodLabel
                 <RestaurantCard
                   name={r.data.name}
                   slug={r.data.slug}
-                  cuisine={r.data.cuisine}
-                  neighborhood={r.data.neighborhood}
+                  cuisine={r.data.cuisine}                  neighborhood={r.data.neighborhood}
                   price={r.data.price}
                   byob={r.data.byob}
                   ownership={r.data.ownership}
