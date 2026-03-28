@@ -14,13 +14,13 @@ website: "https://masagojapanese.com"
 reservations: "phone"
 
 hours:
-  mon: "11:30 AM – 9:30 PM"
-  tue: "11:30 AM – 9:30 PM"
-  wed: "11:30 AM – 9:30 PM"
-  thu: "11:30 AM – 9:30 PM"
-  fri: "11:30 AM – 10:00 PM"
-  sat: "12:30 PM – 10:00 PM"
-  sun: "12:30 PM – 9:30 PM"
+  mon: "12 PM – 10 PM"
+  tue: "12 PM – 10 PM"
+  wed: "12 PM – 10 PM"
+  thu: "12 PM – 10 PM"
+  fri: "12 PM – 10:30 PM"
+  sat: "12 PM – 10:30 PM"
+  sun: "12 PM – 9:30 PM"
 
 byob: true
 outdoor_seating: false

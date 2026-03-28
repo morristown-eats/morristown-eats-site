@@ -8,7 +8,7 @@ neighborhood: "south-street"
 price: "$$$"
 ownership: "independent"
 
-address: "90 South Street, Morristown, NJ 07960"
+address: "88 South Street, Morristown, NJ 07960"
 phone: ""
 website: "https://southandpine.com"
 reservations: "opentable"
@@ -36,8 +36,8 @@ image: ""
 image_alt: ""
 awards: []
 
-one_liner: "Leia Gaccione. Five Iron Chef appearances. Neighborhood setting."
-visit_status: "pending"
+one_liner: "Leia Gaccione. Five Iron Chef appearances. BYOB patio, small room. One of the best reasons to live here."
+visit_status: "visited"
 last_updated: "2026-03-27"
 published: true
 

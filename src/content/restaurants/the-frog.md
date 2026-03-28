@@ -8,10 +8,10 @@ neighborhood: "washington-street"
 price: "$$"
 ownership: "independent"
 
-address: ""
-phone: ""
-website: ""
-reservations: "walk-in"
+address: "18 Washington St, Morristown, NJ 07960"
+phone: "(973) 540-9601"
+website: "https://famishedfrog.com/"
+reservations: "opentable"
 
 hours:
   mon: ""
@@ -36,8 +36,8 @@ image: ""
 image_alt: ""
 awards: []
 
-one_liner: "Bar and American. Formerly Famished Frog."
-visit_status: "fact-shell"
+one_liner: "Three-story bar on Washington Street. The Frog since 2024, Famished Frog before that. Billiards, shuffleboard, craft beer, gluten-free fryer. The 25-year Washington St anchor."
+visit_status: "visited"
 last_updated: "2026-03-27"
 published: true
 

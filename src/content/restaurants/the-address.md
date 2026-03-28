@@ -14,13 +14,13 @@ website: "https://theaddressnj.com"
 reservations: "opentable"
 
 hours:
-  mon: "11:30 AM – 2:30 PM, 4:00 PM – 9:30 PM"
-  tue: "11:30 AM – 2:30 PM, 4:00 PM – 9:30 PM"
-  wed: "11:30 AM – 2:30 PM, 4:00 PM – 9:30 PM"
-  thu: "11:30 AM – 2:30 PM, 4:00 PM – 10:00 PM"
-  fri: "11:30 AM – 2:30 PM, 4:00 PM – 10:30 PM"
-  sat: "11:30 AM – 2:30 PM, 4:00 PM – 10:30 PM"
-  sun: "11:30 AM – 9:00 PM"
+  mon: "CLOSED"
+  tue: "5 PM – 9 PM"
+  wed: "5 PM – 9 PM"
+  thu: "5 PM – 9 PM"
+  fri: "5 PM – 10 PM"
+  sat: "4 PM – 10 PM"
+  sun: "4 PM – 9 PM"
 
 byob: true
 outdoor_seating: true
@@ -39,7 +39,7 @@ image_alt: ""
 awards: []
 
 one_liner: "Greek-Mediterranean. BYOB. Heated patio. Book ahead."
-visit_status: "pending"
+visit_status: "visited"
 last_updated: "2026-03-27"
 published: true
 

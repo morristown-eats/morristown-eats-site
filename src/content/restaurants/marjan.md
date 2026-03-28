@@ -39,7 +39,7 @@ image_alt: ""
 awards: []
 
 one_liner: "Morristown's only Persian restaurant. Kebabs, stews, saffron rice."
-visit_status: "pending"
+visit_status: "visited"
 last_updated: "2026-03-27"
 published: true
 

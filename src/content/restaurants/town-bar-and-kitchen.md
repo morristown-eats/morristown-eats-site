@@ -5,13 +5,13 @@ status: "active"
 
 cuisine: ["american"]
 neighborhood: "the-green"
-price: "$$"
-ownership: "independent"
+price: "$$$"
+ownership: "local_group"
 
-address: ""
-phone: ""
-website: ""
-reservations: "walk-in"
+address: "80 Elm St, Morristown, NJ 07960"
+phone: "(973) 889-8696"
+website: "https://www.townbarandkitchen.com/"
+reservations: "resy"
 
 hours:
   mon: ""
@@ -23,7 +23,7 @@ hours:
   sun: ""
 
 byob: false
-outdoor_seating: false
+outdoor_seating: true
 
 good_for: []
 vibe: []
@@ -36,8 +36,8 @@ image: ""
 image_alt: ""
 awards: []
 
-one_liner: "American restaurant."
-visit_status: "fact-shell"
+one_liner: "Rooftop fireplace, Resy, globally inspired menu. 40NORTH group. Morristown's version of a destination restaurant that doesn't require a special occasion."
+visit_status: "visited"
 last_updated: "2026-03-27"
 published: true
 

@@ -4,14 +4,14 @@ slug: "rods-steak-and-seafood-grille"
 status: "active"
 
 cuisine: ["steakhouse"]
-neighborhood: "speedwell"
+neighborhood: "the-green"
 price: "$$$"
 ownership: "independent"
 
-address: "Madison Hotel, Morristown, NJ"
-phone: ""
-website: ""
-reservations: "walk-in"
+address: "1 Convent Road, Morristown, NJ 07960"
+phone: "(973) 539-6666"
+website: "https://www.rodssteak.com/"
+reservations: "opentable"
 
 hours:
   mon: ""
@@ -36,7 +36,7 @@ image: ""
 image_alt: ""
 awards: []
 
-one_liner: "Steakhouse. Hotel restaurant."
+one_liner: "Morristown's old-money steakhouse. Madison Hotel. Open since 1951. Tablecloths, proper cocktails, serious cuts."
 visit_status: "fact-shell"
 last_updated: "2026-03-27"
 published: true

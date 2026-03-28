@@ -8,10 +8,10 @@ neighborhood: "washington-street"
 price: "$"
 ownership: "independent"
 
-address: ""
+address: "5 Washington St, Morristown, NJ 07960"
 phone: ""
-website: ""
-reservations: "walk-in"
+website: "https://www.surrealcreamery.com/"
+reservations: "none"
 
 hours:
   mon: ""
@@ -36,8 +36,8 @@ image: ""
 image_alt: ""
 awards: []
 
-one_liner: "Ice cream and dessert."
-visit_status: "fact-shell"
+one_liner: "Artisanal soft serve in mason jars. Washington Street. Matcha, taro, unique flavors. Bubble tea too."
+visit_status: "visited"
 last_updated: "2026-03-27"
 published: true
 

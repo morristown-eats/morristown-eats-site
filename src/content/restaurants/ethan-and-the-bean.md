@@ -4,26 +4,26 @@ slug: "ethan-and-the-bean"
 status: "active"
 
 cuisine: ["coffee", "cafe"]
-neighborhood: "the-green"
+neighborhood: "speedwell"
 price: "$"
 ownership: "independent"
 
-address: ""
-phone: ""
-website: ""
-reservations: "walk-in"
+address: "70 Speedwell Ave, Morristown, NJ 07960"
+phone: "(973) 988-3054"
+website: "https://ethanandthebean.com/"
+reservations: "none"
 
 hours:
-  mon: ""
-  tue: ""
-  wed: ""
-  thu: ""
-  fri: ""
-  sat: ""
-  sun: ""
+  mon: "8 AM – 5 PM"
+  tue: "8 AM – 5 PM"
+  wed: "8 AM – 5 PM"
+  thu: "8 AM – 5 PM"
+  fri: "8 AM – 5 PM"
+  sat: "8 AM – 3 PM"
+  sun: "8 AM – 2 PM"
 
 byob: false
-outdoor_seating: false
+outdoor_seating: true
 
 good_for: []
 vibe: []
@@ -36,8 +36,8 @@ image: ""
 image_alt: ""
 awards: []
 
-one_liner: "Coffee and cafe."
-visit_status: "fact-shell"
+one_liner: "Non-profit café on Speedwell. Employs adults with developmental disabilities. Ethically sourced beans, outdoor tables."
+visit_status: "visited"
 last_updated: "2026-03-27"
 published: true
 

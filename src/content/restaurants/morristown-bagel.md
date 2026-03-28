@@ -14,13 +14,13 @@ website: "https://morrisbagels.com"
 reservations: "walk-in"
 
 hours:
-  mon: "6:00 AM – 3:00 PM"
-  tue: "6:00 AM – 3:00 PM"
-  wed: "6:00 AM – 3:00 PM"
-  thu: "6:00 AM – 3:00 PM"
-  fri: "6:00 AM – 3:00 PM"
-  sat: "6:00 AM – 3:00 PM"
-  sun: "6:00 AM – 3:00 PM"
+  mon: "6 AM – 3 PM"
+  tue: "6 AM – 3 PM"
+  wed: "6 AM – 3 PM"
+  thu: "6 AM – 3 PM"
+  fri: "6 AM – 3 PM"
+  sat: "6 AM – 2 PM"
+  sun: "6 AM – 2 PM"
 
 byob: false
 outdoor_seating: false
@@ -39,7 +39,7 @@ image_alt: ""
 awards: []
 
 one_liner: "Open since 1950. Same counter, same morning."
-visit_status: "pending"
+visit_status: "visited"
 last_updated: "2026-03-27"
 published: true
 

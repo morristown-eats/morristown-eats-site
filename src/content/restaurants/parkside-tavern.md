@@ -4,14 +4,14 @@ slug: "parkside-tavern"
 status: "active"
 
 cuisine: ["american", "pub"]
-neighborhood: "speedwell"
+neighborhood: "hq-plaza"
 price: "$$"
 ownership: "independent"
 
-address: ""
+address: "9 Speedwell Ave, Morristown, NJ 07960"
 phone: ""
-website: ""
-reservations: "walk-in"
+website: "https://parksidenj.com/"
+reservations: "opentable"
 
 hours:
   mon: ""
@@ -36,8 +36,8 @@ image: ""
 image_alt: ""
 awards: []
 
-one_liner: "American pub. Part of HQ Hospitality NJ."
-visit_status: "fact-shell"
+one_liner: "Opened October 2024. Old-world tavern inside HQ Plaza. Serious whiskey selection, craft cocktails. The newer sibling to Sushi Lounge."
+visit_status: "visited"
 last_updated: "2026-03-27"
 published: true
 

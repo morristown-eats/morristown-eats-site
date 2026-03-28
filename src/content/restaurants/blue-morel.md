@@ -4,14 +4,14 @@ slug: "blue-morel"
 status: "active"
 
 cuisine: ["new-american"]
-neighborhood: "speedwell"
+neighborhood: "the-green"
 price: "$$$"
 ownership: "independent"
 
-address: "Westin Governor Morris, Morristown, NJ"
-phone: ""
-website: ""
-reservations: "walk-in"
+address: "2 Whippany Rd, Morristown, NJ 07960"
+phone: "(973) 451-2619"
+website: "https://www.bluemorel.com/"
+reservations: "opentable"
 
 hours:
   mon: ""
@@ -36,7 +36,7 @@ image: ""
 image_alt: ""
 awards: []
 
-one_liner: "New American. Hotel restaurant."
+one_liner: "Hotel restaurant inside the Westin Governor Morris. New American farm-to-table. Not where you go on a Tuesday — but worth it for a big occasion."
 visit_status: "fact-shell"
 last_updated: "2026-03-27"
 published: true

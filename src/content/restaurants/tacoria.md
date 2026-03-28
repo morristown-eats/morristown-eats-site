@@ -5,22 +5,22 @@ status: "active"
 
 cuisine: ["mexican"]
 neighborhood: "south-street"
-price: "$$"
+price: "$"
 ownership: "regional_chain"
 
-address: ""
-phone: ""
-website: ""
-reservations: "walk-in"
+address: "52 South St, Morristown, NJ 07960"
+phone: "(877) 340-1645"
+website: "https://tacoria.com/"
+reservations: "none"
 
 hours:
-  mon: ""
-  tue: ""
-  wed: ""
-  thu: ""
-  fri: ""
-  sat: ""
-  sun: ""
+  mon: "11 AM – 9 PM"
+  tue: "11 AM – 9 PM"
+  wed: "11 AM – 9 PM"
+  thu: "11 AM – 9 PM"
+  fri: "11 AM – 10 PM"
+  sat: "11:30 AM – 10 PM"
+  sun: "11:30 AM – 10 PM"
 
 byob: false
 outdoor_seating: false
@@ -36,8 +36,8 @@ image: ""
 image_alt: ""
 awards: []
 
-one_liner: "Mexican. Part of 11-location New Jersey chain."
-visit_status: "fact-shell"
+one_liner: "11-location NJ chain but a real one — counter-service tacos, burritos, bowls. Full vegan menu. Fast, reliable, cheap."
+visit_status: "visited"
 last_updated: "2026-03-27"
 published: true
 

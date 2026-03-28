@@ -37,7 +37,7 @@ image_alt: ""
 awards: []
 
 one_liner: "The fuller Japanese menu down the block from Masago — bone broth ramen, udon, donburi, and BYOB."
-visit_status: "pending"
+visit_status: "visited"
 last_updated: "2026-03-27"
 published: true
 

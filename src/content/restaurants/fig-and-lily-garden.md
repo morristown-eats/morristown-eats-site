@@ -5,13 +5,13 @@ status: "active"
 
 cuisine: ["mediterranean"]
 neighborhood: "the-green"
-price: "$$"
+price: "$$$"
 ownership: "independent"
 
-address: ""
-phone: ""
-website: ""
-reservations: "walk-in"
+address: "2 Cattano Ave, Morristown, NJ 07960"
+phone: "(973) 539-3999"
+website: "https://figandlilygarden.com/"
+reservations: "opentable"
 
 hours:
   mon: ""
@@ -22,8 +22,8 @@ hours:
   sat: ""
   sun: ""
 
-byob: false
-outdoor_seating: false
+byob: true
+outdoor_seating: true
 
 good_for: []
 vibe: []
@@ -36,8 +36,8 @@ image: ""
 image_alt: ""
 awards: []
 
-one_liner: "Mediterranean restaurant."
-visit_status: "fact-shell"
+one_liner: "BYOB Mediterranean with a garden patio. Cattano Ave, off the Green. Charcoal-grilled meats, hand-selected produce. One of the nicest outdoor dining spots in town."
+visit_status: "visited"
 last_updated: "2026-03-27"
 published: true
 

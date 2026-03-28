@@ -14,13 +14,13 @@ website: "https://danbakery.us"
 reservations: "walk-in"
 
 hours:
-  mon: "9:00 AM – 8:00 PM"
-  tue: "9:00 AM – 8:00 PM"
-  wed: "9:00 AM – 8:00 PM"
-  thu: "9:00 AM – 8:00 PM"
-  fri: "9:00 AM – 9:00 PM"
-  sat: "9:00 AM – 9:00 PM"
-  sun: "9:00 AM – 8:00 PM"
+  mon: "9 AM – 8 PM"
+  tue: "9 AM – 8 PM"
+  wed: "9 AM – 8 PM"
+  thu: "9 AM – 8 PM"
+  fri: "9 AM – 9 PM"
+  sat: "9 AM – 9 PM"
+  sun: "9 AM – 8 PM"
 
 byob: false
 outdoor_seating: false
@@ -37,7 +37,7 @@ image: ""
 image_alt: ""
 awards: []
 
-one_liner: "Central Asian pastry. The Honey Cake is why people line up."
+one_liner: "Central Asian pastry on South Street. The Honey Cake is why people line up. Handcrafted daily, European and Central Asian traditions."
 visit_status: "pending"
 last_updated: "2026-03-27"
 published: true

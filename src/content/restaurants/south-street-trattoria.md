@@ -1,7 +1,7 @@
 ---
 name: "South Street Trattoria"
 slug: "south-street-trattoria"
-status: "active"
+status: "closed"
 
 cuisine: ["italian"]
 neighborhood: "south-street"
@@ -39,7 +39,7 @@ awards: []
 one_liner: "Italian trattoria."
 visit_status: "fact-shell"
 last_updated: "2026-03-27"
-published: true
+published: false
 
 owner_names: []
 awards_note: ""
