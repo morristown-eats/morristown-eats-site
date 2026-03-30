@@ -1,0 +1,157 @@
+---
+/**
+ * LatestNotes — photo grid of recent field notes
+ * Shows up to 9 images from published notes, links to the note page.
+ * Designed for the homepage. Zine-aesthetic: thick borders, slight rotations, stamp shadows.
+ */
+import { getCollection } from 'astro:content';
+
+const allNotes = await getCollection('notes', ({ data }) => data.published);
+allNotes.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+// Collect all images from notes, newest first
+interface NoteImage {
+  src: string;
+  alt: string;
+  label: string;
+  noteSlug: string;
+  establishment: string;
+  date: string;
+}
+
+const images: NoteImage[] = [];
+for (const note of allNotes) {
+  if (!note.data.images) continue;
+  const imgs = note.data.images;
+  // Room → Plate → Detail order per note
+  if (imgs.room) images.push({ ...imgs.room, label: 'room', noteSlug: note.slug, establishment: note.data.establishment, date: note.data.date });
+  if (imgs.plate) images.push({ ...imgs.plate, label: 'plate', noteSlug: note.slug, establishment: note.data.establishment, date: note.data.date });
+  if (imgs.detail) images.push({ ...imgs.detail, label: 'detail', noteSlug: note.slug, establishment: note.data.establishment, date: note.data.date });
+}
+
+// Take up to 9 images for the grid
+const gridImages = images.slice(0, 9);
+---
+
+{gridImages.length > 0 && (
+  <section class="page-section-alt latest-notes-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header-left">
+          <span class="label">From the Field</span>
+          <h2>Latest visits</h2>
+        </div>
+        <a href="/notes" class="btn btn-outline btn-sm">All notes →</a>
+      </div>
+
+      <div class="notes-photo-grid">
+        {gridImages.map((img, i) => (
+          <a
+            href={`/notes/${img.noteSlug}`}
+            class="notes-photo-cell"
+            aria-label={`${img.establishment} — ${img.label}`}
+          >
+            <img src={img.src} alt={img.alt} loading="lazy" />
+            <div class="notes-photo-overlay">
+              <span class="notes-photo-name">{img.establishment}</span>
+              <span class="notes-photo-label">{img.label}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .notes-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+
+  .notes-photo-cell {
+    position: relative;
+    display: block;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border: 3px solid var(--color-ink);
+    box-shadow: var(--shadow-stamp);
+    transition: transform 0.12s, box-shadow 0.12s, border-color 0.12s;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Zine rotations */
+  .notes-photo-cell:nth-child(6n+1) { transform: rotate(-0.6deg); }
+  .notes-photo-cell:nth-child(6n+2) { transform: rotate(0.4deg); }
+  .notes-photo-cell:nth-child(6n+3) { transform: rotate(-0.3deg); }
+  .notes-photo-cell:nth-child(6n+4) { transform: rotate(0.7deg); }
+  .notes-photo-cell:nth-child(6n+5) { transform: rotate(-0.5deg); }
+  .notes-photo-cell:nth-child(6n)   { transform: rotate(0.3deg); }
+
+  .notes-photo-cell:hover {
+    transform: rotate(0deg) translate(-2px, -2px) !important;
+    box-shadow: 5px 5px 0 var(--color-rust);
+    border-color: var(--color-rust);
+  }
+
+  .notes-photo-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Hover overlay */
+  .notes-photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(26,18,8,0.85) 0%, rgba(26,18,8,0.2) 50%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--space-3);
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .notes-photo-cell:hover .notes-photo-overlay {
+    opacity: 1;
+  }
+
+  .notes-photo-name {
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    color: var(--color-paper);
+    line-height: 1.2;
+  }
+  .notes-photo-label {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-rust);
+    margin-top: 2px;
+  }
+
+  /* Mobile: 2 columns */
+  @media (max-width: 768px) {
+    .notes-photo-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+    }
+    .notes-photo-cell:nth-child(n) { transform: rotate(0deg); }
+    /* Always show overlay on mobile (no hover) */
+    .notes-photo-overlay { opacity: 1; }
+  }
+
+  @media (max-width: 480px) {
+    .notes-photo-grid {
+      gap: var(--space-2);
+    }
+    .notes-photo-cell {
+      border-width: 2px;
+      box-shadow: 2px 2px 0 var(--color-ink);
+    }
+  }
+</style>
