@@ -13,6 +13,16 @@ vibeTags: ["new comfort food", "colorful", "bold", "fusion"]
 lede: "The frozen margaritas are doing daily flavors now and that alone is worth the walk downtown."
 wouldReturn: "absolutely"
 bestFor: "Friday dinner, more energy"
+images:
+  room:
+    src: "/images/notes/orale-room.jpeg"
+    alt: "Orale Mexican Kitchen storefront on South Street, brick building, blue sky, Saturday afternoon"
+  plate:
+    src: "/images/notes/orale-plate.jpeg"
+    alt: "Three shrimp tacos on purple cabbage slaw with creamy sauce and cilantro"
+  detail:
+    src: "/images/notes/orale-detail.jpeg"
+    alt: "Blueberry frozen margarita in a clear glass with black straw, cobalt blue wall behind"
 published: true
 ---
 

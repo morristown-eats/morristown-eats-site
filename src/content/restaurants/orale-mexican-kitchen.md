@@ -38,8 +38,8 @@ dishes:
 
 parking: ""
 
-image: ""
-image_alt: ""
+image: "/images/notes/orale-room.jpeg"
+image_alt: "Orale Mexican Kitchen storefront on South Street"
 awards: []
 
 one_liner: "Bold Mexican-American with strong daily-flavor frozen margs. The comps alone are worth the trip."

@@ -17,6 +17,11 @@ const notes = defineCollection({
     lede: z.string(),
     wouldReturn: z.string().optional(),
     bestFor: z.string().optional(),
+    images: z.object({
+      room: z.object({ src: z.string(), alt: z.string() }).optional(),
+      plate: z.object({ src: z.string(), alt: z.string() }).optional(),
+      detail: z.object({ src: z.string(), alt: z.string() }).optional(),
+    }).optional(),
     published: z.boolean().default(false),
   }),
 });

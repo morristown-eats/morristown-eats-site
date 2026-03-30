@@ -119,6 +119,27 @@ const neighborhoodLabel = data.neighborhood
       flex-wrap: wrap;
       margin-top: 1rem;
     }
+    .note-photo {
+      width: 100%;
+      border: 3px solid var(--color-ink);
+      box-shadow: 4px 4px 0 var(--color-ink);
+      margin-bottom: 2rem;
+    }
+    .note-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .note-photo-caption {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-ink-muted);
+      padding: 0.5rem 0.75rem;
+      background: var(--color-paper-dark);
+      border-top: 2px solid var(--color-ink);
+    }
     .note-back {
       font-family: var(--font-mono);
       font-size: var(--text-xs);
@@ -147,13 +168,37 @@ const neighborhoodLabel = data.neighborhood
       <!-- Title -->
       <h1 class="note-title">{data.establishment}</h1>
 
+      <!-- Room photo (hero) -->
+      {data.images?.room && (
+        <div class="note-photo">
+          <img src={data.images.room.src} alt={data.images.room.alt} loading="eager" />
+          <div class="note-photo-caption">The Room</div>
+        </div>
+      )}
+
       <!-- Lede -->
       <p class="note-lede">{data.lede}</p>
+
+      <!-- Plate photo -->
+      {data.images?.plate && (
+        <div class="note-photo">
+          <img src={data.images.plate.src} alt={data.images.plate.alt} loading="lazy" />
+          <div class="note-photo-caption">The Plate</div>
+        </div>
+      )}
 
       <!-- Body -->
       <div class="note-body">
         <Content />
       </div>
+
+      <!-- Detail photo -->
+      {data.images?.detail && (
+        <div class="note-photo">
+          <img src={data.images.detail.src} alt={data.images.detail.alt} loading="lazy" />
+          <div class="note-photo-caption">The Detail</div>
+        </div>
+      )}
 
       <!-- Footer info line -->
       <div class="note-footer">
