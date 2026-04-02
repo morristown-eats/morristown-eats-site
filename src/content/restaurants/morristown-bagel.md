@@ -9,6 +9,8 @@ price: "$"
 ownership: "independent"
 
 address: "121 Morris Street, Morristown, NJ 07960"
+lat: 40.7971
+lng: -74.4772
 phone: "(973) 292-0717"
 website: "https://morrisbagels.com"
 reservations: "walk-in"

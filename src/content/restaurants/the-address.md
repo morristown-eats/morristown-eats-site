@@ -9,6 +9,8 @@ price: "$$$"
 ownership: "independent"
 
 address: "20 South Street, Morristown, NJ 07960"
+lat: 40.7942
+lng: -74.4811
 phone: "(973) 400-0200"
 website: "https://theaddressnj.com"
 reservations: "opentable"

@@ -9,6 +9,8 @@ price: "$$"
 ownership: "independent"
 
 address: "140 Morris St, Morristown, NJ 07960"
+lat: 40.7978
+lng: -74.4783
 phone: "(973) 998-4534"
 website: "https://endofelm.com/"
 reservations: "opentable"

@@ -9,6 +9,8 @@ price: "$$"
 ownership: "independent"
 
 address: "40 Speedwell Ave, Morristown, NJ 07960"
+lat: 40.7952
+lng: -74.4751
 phone: "(973) 455-1391"
 website: "https://lins-palace.thaitomseattle.com/"
 reservations: "phone"

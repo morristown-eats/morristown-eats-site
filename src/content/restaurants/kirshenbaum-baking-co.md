@@ -9,6 +9,8 @@ price: "$"
 ownership: "local_group"
 
 address: "22 Schuyler Place, Morristown, NJ 07960"
+lat: 40.7989
+lng: -74.4819
 phone: "(973) 850-8005"
 website: "https://kbcbakery.com/"
 reservations: "none"

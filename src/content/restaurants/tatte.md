@@ -9,6 +9,8 @@ price: "$$"
 ownership: "regional_chain"
 
 address: "2 Speedwell Ave, Morristown, NJ 07960"
+lat: 40.799
+lng: -74.4763
 phone: ""
 website: "https://tattebakery.com"
 reservations: "walk-in"

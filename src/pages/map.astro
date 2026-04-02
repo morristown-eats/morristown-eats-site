@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import neighborhoods from '../data/neighborhoods.json';
 
-const allRestaurants = await getCollection('restaurants', ({ data }) => data.published);
+const allRestaurants = await getCollection('restaurants', ({ data }) => data.published && data.status !== 'closed');
 const grouped = neighborhoods.map(n => ({
   neighborhood: n,
   restaurants: allRestaurants.filter(r => r.data.neighborhood === n.slug)
@@ -13,80 +13,144 @@ const grouped = neighborhoods.map(n => ({
 
 <BaseLayout
   title="Map"
-  description="Where to eat in Morristown, NJ — organized by neighborhood."
+  description="Every restaurant in Morristown, NJ — on an actual map."
 >
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
   <style>
-    .map-wrap {
-      padding: 3rem 0 6rem;
+    /* ─── Page Layout ─── */
+    .map-page {
+      padding-bottom: 0;
     }
-    .map-header {
+    .map-page-header {
       text-align: center;
-      margin-bottom: 3rem;
+      padding: 2.5rem 0 1.5rem;
     }
-    .map-header .label {
+    .map-page-header .label {
       display: block;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
     }
-    .map-header h1 {
+    .map-page-header h1 {
       font-family: var(--font-display);
       font-size: clamp(2rem, 5vw, 3rem);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
     }
-    .map-header .map-sub {
+    .map-page-header p {
       font-family: var(--font-body);
       color: var(--color-ink-muted);
-      font-size: var(--text-base);
+      font-size: var(--text-sm);
     }
 
-    /* Illustrated map container */
-    .map-illustration {
+    /* ─── View Toggle ─── */
+    .view-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .view-btn {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.35rem 0.85rem;
+      border: 2px solid var(--color-ink);
+      background: transparent;
+      color: var(--color-ink);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .view-btn.active,
+    .view-btn:hover {
+      background: var(--color-ink);
+      color: var(--color-paper);
+    }
+
+    /* ─── Filter Bar ─── */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0 1rem 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .filter-btn {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.65rem;
+      border: 1.5px solid var(--color-ink-muted);
+      background: transparent;
+      color: var(--color-ink-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .filter-btn.active {
+      border-color: var(--color-rust);
+      background: var(--color-rust);
+      color: var(--color-paper);
+    }
+    .filter-btn:hover:not(.active) {
+      border-color: var(--color-ink);
+      color: var(--color-ink);
+    }
+
+    /* ─── Map Container ─── */
+    #map-view {
+      width: 100%;
+    }
+    #leaflet-map {
+      width: 100%;
+      height: 620px;
+      border-top: 2px solid var(--color-ink);
+      border-bottom: 2px solid var(--color-ink);
+    }
+
+    /* ─── List View ─── */
+    #list-view {
+      display: none;
+    }
+    .list-view-inner {
       background: var(--color-paper-dark);
-      border: 3px solid var(--color-ink);
-      box-shadow: 6px 6px 0 var(--color-ink);
-      padding: 2rem;
-      margin-bottom: 3rem;
-      position: relative;
-      overflow: hidden;
+      border-top: 2px solid var(--color-ink);
+      border-bottom: 2px solid var(--color-ink);
+      padding: 2rem 1rem 3rem;
     }
-    .map-illustration::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-    }
-    .map-grid {
+    .list-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+      max-width: 1100px;
+      margin: 0 auto;
       position: relative;
-      z-index: 1;
     }
-    .map-zone {
+    .list-zone {
       background: var(--color-paper);
       border: 2px solid var(--color-ink);
       padding: 1.25rem;
       transform: rotate(var(--rot, 0deg));
       transition: transform 0.2s ease;
     }
-    .map-zone:hover {
-      transform: rotate(0deg) scale(1.02);
-      z-index: 2;
-    }
-    .map-zone:nth-child(1) { --rot: -0.5deg; }
-    .map-zone:nth-child(2) { --rot: 0.3deg; }
-    .map-zone:nth-child(3) { --rot: -0.7deg; }
-    .map-zone:nth-child(4) { --rot: 0.4deg; }
-    .map-zone:nth-child(5) { --rot: -0.3deg; }
-    .map-zone:nth-child(6) { --rot: 0.6deg; }
-    .map-zone-name {
+    .list-zone:hover { transform: rotate(0deg) scale(1.02); z-index: 2; }
+    .list-zone:nth-child(1) { --rot: -0.5deg; }
+    .list-zone:nth-child(2) { --rot: 0.3deg; }
+    .list-zone:nth-child(3) { --rot: -0.7deg; }
+    .list-zone:nth-child(4) { --rot: 0.4deg; }
+    .list-zone:nth-child(5) { --rot: -0.3deg; }
+    .list-zone:nth-child(6) { --rot: 0.6deg; }
+    .list-zone-name {
       font-family: var(--font-display);
       font-size: 1.1rem;
       color: var(--color-ink);
       margin-bottom: 0.25rem;
       line-height: 1.2;
     }
-    .map-zone-count {
+    .list-zone-count {
       font-family: var(--font-mono);
       font-size: 0.65rem;
       text-transform: uppercase;
@@ -95,101 +159,436 @@ const grouped = neighborhoods.map(n => ({
       margin-bottom: 0.75rem;
       display: block;
     }
-    .map-zone-list {
+    .list-zone-list {
       list-style: none;
       padding: 0;
       margin: 0;
     }
-    .map-zone-list li {
+    .list-zone-list li {
       font-family: var(--font-body);
       font-size: 0.8rem;
       line-height: 1.6;
-      border-bottom: 1px dashed var(--color-border);
+      border-bottom: 1px dashed #c9b99a;
       padding: 0.3rem 0;
     }
-    .map-zone-list li:last-child {
-      border-bottom: none;
-    }
-    .map-zone-list a {
-      color: var(--color-ink);
-      text-decoration: none;
-    }
-    .map-zone-list a:hover {
-      color: var(--color-rust);
-    }
-    .map-zone-list .map-price {
+    .list-zone-list li:last-child { border-bottom: none; }
+    .list-zone-list a { color: var(--color-ink); text-decoration: none; }
+    .list-zone-list a:hover { color: var(--color-rust); }
+    .list-price {
       font-family: var(--font-mono);
       font-size: 0.65rem;
       color: var(--color-ink-muted);
       margin-left: 0.25rem;
     }
-    .map-zone-list .map-byob {
+    .list-byob {
       font-family: var(--font-mono);
       font-size: 0.55rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      background: var(--color-green);
+      background: var(--color-olive);
       color: var(--color-paper);
       padding: 0.05rem 0.3rem;
       margin-left: 0.35rem;
       vertical-align: middle;
     }
 
-    /* Compass rose */
-    .map-compass {
-      position: absolute;
-      bottom: 1rem;
-      right: 1.5rem;
-      font-family: var(--font-display);
-      font-size: 2rem;
-      color: var(--color-rust);
-      opacity: 0.3;
-      z-index: 1;
+    /* ─── Leaflet popup overrides ─── */
+    .leaflet-popup-content-wrapper {
+      background: #F0E6C8;
+      border: 2px solid #1A1208;
+      border-radius: 0;
+      box-shadow: 4px 4px 0 #1A1208;
+      transform: rotate(-0.4deg);
+      padding: 0;
     }
+    .leaflet-popup-content {
+      margin: 0;
+      padding: 0;
+      width: 220px !important;
+    }
+    .leaflet-popup-tip-container { display: none; }
+    .leaflet-popup-close-button {
+      color: #1A1208 !important;
+      font-size: 18px !important;
+      top: 6px !important;
+      right: 8px !important;
+    }
+    .me-popup {
+      padding: 1rem 1.1rem 0.9rem;
+    }
+    .me-popup-name {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 1rem;
+      color: #1A1208;
+      line-height: 1.2;
+      margin: 0 0 0.3rem;
+      padding-right: 1rem;
+    }
+    .me-popup-meta {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #7A6550;
+      margin-bottom: 0.5rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .me-popup-byob {
+      background: #5A6634;
+      color: #F0E6C8;
+      padding: 0.05rem 0.35rem;
+      font-size: 0.55rem;
+    }
+    .me-popup-liner {
+      font-family: 'Special Elite', serif;
+      font-size: 0.78rem;
+      color: #1A1208;
+      line-height: 1.5;
+      margin-bottom: 0.75rem;
+    }
+    .me-popup-link {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #C4572A;
+      text-decoration: none;
+      border-bottom: 1px solid #C4572A;
+    }
+    .me-popup-link:hover { color: #1A1208; border-color: #1A1208; }
 
-    @media (max-width: 768px) {
-      .map-grid {
-        grid-template-columns: 1fr;
+    /* ─── Mobile ─── */
+    @media (max-width: 640px) {
+      #leaflet-map { height: 480px; }
+      .filter-bar {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 0 1rem 0.75rem;
+        -webkit-overflow-scrolling: touch;
       }
-      .map-zone { transform: rotate(0deg); }
+      .filter-bar::-webkit-scrollbar { display: none; }
+      .list-grid { grid-template-columns: 1fr; }
+      .list-zone { transform: rotate(0deg) !important; }
     }
   </style>
 
-  <div class="container">
-    <div class="map-wrap">
-
-      <div class="map-header">
+  <div class="map-page">
+    <div class="container">
+      <div class="map-page-header">
         <span class="label">The Map</span>
         <h1>Where everything is.</h1>
-        <p class="map-sub">Morristown, NJ — organized by neighborhood.</p>
+        <p>Morristown, NJ — tap any pin to see what's there.</p>
       </div>
 
-      <div class="map-illustration">
-        <div class="map-grid">
+      <!-- View toggle -->
+      <div class="view-toggle">
+        <button class="view-btn active" id="btnMap">Map</button>
+        <button class="view-btn" id="btnList">List</button>
+      </div>
+
+      <!-- Neighborhood filter -->
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-neighborhood="all">All</button>
+        {neighborhoods.map(n => (
+          <button class="filter-btn" data-neighborhood={n.slug}>{n.label}</button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Map view -->
+    <div id="map-view">
+      <div id="leaflet-map"></div>
+    </div>
+
+    <!-- List view -->
+    <div id="list-view">
+      <div class="list-view-inner">
+        <div class="list-grid">
           {grouped.map(g => (
-            <div class="map-zone">
-              <p class="map-zone-name">{g.neighborhood.label}</p>
-              <span class="map-zone-count">
+            <div class="list-zone">
+              <p class="list-zone-name">{g.neighborhood.label}</p>
+              <span class="list-zone-count">
                 {g.restaurants.length} {g.restaurants.length === 1 ? 'place' : 'places'}
               </span>
-              <ul class="map-zone-list">
+              <ul class="list-zone-list">
                 {g.restaurants.map(r => (
                   <li>
-                    <a href={`/restaurants/${r.slug}`}>
-                      {r.data.name}
-                    </a>
-                    <span class="map-price">{r.data.price}</span>
-                    {r.data.byob && <span class="map-byob">BYOB</span>}
+                    <a href={`/restaurants/${r.slug}`}>{r.data.name}</a>
+                    <span class="list-price">{r.data.price}</span>
+                    {r.data.byob && <span class="list-byob">BYOB</span>}
                   </li>
                 ))}
               </ul>
             </div>
           ))}
         </div>
-        <div class="map-compass">N</div>
       </div>
-
     </div>
   </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script>
+    // ─── View toggle ───────────────────────────────────────────
+    const btnMap = document.getElementById('btnMap');
+    const btnList = document.getElementById('btnList');
+    const mapView = document.getElementById('map-view');
+    const listView = document.getElementById('list-view');
+    const filterBar = document.getElementById('filterBar');
+
+    btnMap?.addEventListener('click', () => {
+      btnMap.classList.add('active');
+      btnList?.classList.remove('active');
+      mapView!.style.display = '';
+      listView!.style.display = 'none';
+      filterBar!.style.display = '';
+    });
+
+    btnList?.addEventListener('click', () => {
+      btnList.classList.add('active');
+      btnMap?.classList.remove('active');
+      listView!.style.display = '';
+      mapView!.style.display = 'none';
+      filterBar!.style.display = 'none';
+    });
+
+    // ─── Map init ──────────────────────────────────────────────
+    // Wait for Leaflet to load
+    window.addEventListener('load', initMap);
+
+    function initMap() {
+      if (typeof (window as any).L === 'undefined') return;
+      const L = (window as any).L;
+
+      const map = L.map('leaflet-map', {
+        center: [40.7969, -74.4815],
+        zoom: 15,
+        zoomControl: false,
+        scrollWheelZoom: true,
+      });
+
+      // Custom zoom control — bottom right
+      L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+      // ─── Tile layer: CartoDB Voyager No Labels ───
+      // CSS filter warms it to match --color-paper palette
+      const tileLayer = L.tileLayer(
+        'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png',
+        {
+          attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
+          subdomains: 'abcd',
+          maxZoom: 19,
+        }
+      );
+      tileLayer.addTo(map);
+
+      // Apply warm sepia filter to the tile pane
+      const tilePane = map.getPanes().tilePane as HTMLElement;
+      tilePane.style.filter = 'sepia(35%) saturate(75%) brightness(103%) hue-rotate(-8deg)';
+
+      // ─── Neighborhood label markers ───
+      // Centroids for each neighborhood — placed as ghosted HTML markers
+      const neighborhoodLabels: Record<string, [number, number]> = {
+        'south-street':       [40.7947, -74.4806],
+        'the-green':          [40.7984, -74.4822],
+        'speedwell':          [40.7965, -74.4744],
+        'washington-street':  [40.7968, -74.4837],
+        'morris-street':      [40.7970, -74.4785],
+        'headquarters-plaza': [40.7990, -74.4762],
+      };
+
+      const neighborhoodNames: Record<string, string> = {
+        'south-street': 'South Street',
+        'the-green': 'The Green',
+        'speedwell': 'Speedwell Ave',
+        'washington-street': 'Washington St',
+        'morris-street': 'Morris Street',
+        'headquarters-plaza': 'HQ Plaza',
+      };
+
+      const labelMarkers: Record<string, any> = {};
+
+      Object.entries(neighborhoodLabels).forEach(([slug, coords]) => {
+        const icon = L.divIcon({
+          className: '',
+          html: `<div class="nbhd-label" data-slug="${slug}">${neighborhoodNames[slug]}</div>`,
+          iconSize: [140, 30],
+          iconAnchor: [70, 15],
+        });
+        labelMarkers[slug] = L.marker(coords, { icon, interactive: false, zIndexOffset: -100 }).addTo(map);
+      });
+
+      // ─── Restaurant pins ───
+      interface RestaurantFeature {
+        type: string;
+        geometry: { type: string; coordinates: [number, number] };
+        properties: {
+          slug: string;
+          name: string;
+          one_liner: string;
+          price: string;
+          neighborhood: string;
+          ownership: string;
+          byob: boolean;
+          cuisine: string[];
+          visit_status: string;
+          address: string;
+        };
+      }
+
+      let allMarkers: { marker: any; feature: RestaurantFeature }[] = [];
+      let activeNeighborhood = 'all';
+
+      function makePin(feature: RestaurantFeature) {
+        const { name, slug, one_liner, price, byob, neighborhood, cuisine } = feature.properties;
+        const [lng, lat] = feature.geometry.coordinates;
+
+        // Custom SVG pin — rust circle with first letter
+        const letter = name.charAt(0).toUpperCase();
+        const icon = L.divIcon({
+          className: '',
+          html: `<div class="me-pin" title="${name}"><span>${letter}</span></div>`,
+          iconSize: [32, 32],
+          iconAnchor: [16, 16],
+          popupAnchor: [0, -20],
+        });
+
+        const cuisineStr = cuisine.slice(0, 2).join(', ');
+        const byobBadge = byob ? '<span class="me-popup-byob">BYOB</span>' : '';
+        const baseUrl = window.location.origin;
+
+        const popupHtml = `
+          <div class="me-popup">
+            <p class="me-popup-name">${name}</p>
+            <div class="me-popup-meta">
+              <span>${price}</span>
+              ${cuisineStr ? `<span>${cuisineStr}</span>` : ''}
+              ${byobBadge}
+            </div>
+            ${one_liner ? `<p class="me-popup-liner">${one_liner}</p>` : ''}
+            <a class="me-popup-link" href="${baseUrl}/restaurants/${slug}">Read more →</a>
+          </div>
+        `;
+
+        const marker = L.marker([lat, lng], { icon })
+          .bindPopup(popupHtml, { maxWidth: 240, minWidth: 220 });
+
+        return { marker, feature };
+      }
+
+      function renderMarkers(neighborhood: string) {
+        // Remove all current markers
+        allMarkers.forEach(({ marker }) => map.removeLayer(marker));
+
+        // Add filtered markers
+        allMarkers.forEach(({ marker, feature }) => {
+          if (neighborhood === 'all' || feature.properties.neighborhood === neighborhood) {
+            marker.addTo(map);
+          }
+        });
+
+        // Dim non-active neighborhood labels
+        document.querySelectorAll('.nbhd-label').forEach((el) => {
+          const slug = (el as HTMLElement).dataset.slug;
+          if (neighborhood === 'all' || slug === neighborhood) {
+            (el as HTMLElement).style.opacity = '1';
+          } else {
+            (el as HTMLElement).style.opacity = '0.2';
+          }
+        });
+      }
+
+      // Fetch GeoJSON and build markers
+      fetch('/data/restaurants.geojson')
+        .then(r => r.json())
+        .then((geojson) => {
+          geojson.features.forEach((feature: RestaurantFeature) => {
+            const item = makePin(feature);
+            item.marker.addTo(map);
+            allMarkers.push(item);
+          });
+        });
+
+      // ─── Filter buttons ───────────────────────────────────────
+      document.querySelectorAll('.filter-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeNeighborhood = (btn as HTMLElement).dataset.neighborhood || 'all';
+          renderMarkers(activeNeighborhood);
+        });
+      });
+    }
+  </script>
+
+  <!-- Inline styles for dynamically injected elements (Leaflet DivIcon) -->
+  <style is:global>
+    /* Neighborhood labels — hand-written feel, ghosted on the map */
+    .nbhd-label {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 0.85rem;
+      color: #1A1208;
+      opacity: 0.35;
+      white-space: nowrap;
+      pointer-events: none;
+      text-shadow: 1px 1px 0 #F0E6C8, -1px -1px 0 #F0E6C8;
+      transition: opacity 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    /* Restaurant pin — rust circle with letter */
+    .me-pin {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #C4572A;
+      border: 2px solid #1A1208;
+      box-shadow: 2px 2px 0 #1A1208;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      font-family: 'Permanent Marker', cursive;
+      font-size: 0.75rem;
+      color: #F0E6C8;
+      line-height: 1;
+    }
+    .me-pin:hover {
+      transform: scale(1.2);
+      box-shadow: 3px 3px 0 #1A1208;
+    }
+
+    /* Remove default Leaflet marker shadow */
+    .leaflet-marker-shadow { display: none !important; }
+
+    /* Attribution — small, muted */
+    .leaflet-control-attribution {
+      font-family: 'Space Mono', monospace !important;
+      font-size: 0.55rem !important;
+      background: rgba(240, 230, 200, 0.85) !important;
+      color: #7A6550 !important;
+    }
+    .leaflet-control-attribution a { color: #7A6550 !important; }
+
+    /* Zoom control */
+    .leaflet-control-zoom a {
+      font-family: 'Space Mono', monospace !important;
+      background: #F0E6C8 !important;
+      color: #1A1208 !important;
+      border: 2px solid #1A1208 !important;
+      border-radius: 0 !important;
+    }
+    .leaflet-control-zoom a:hover {
+      background: #1A1208 !important;
+      color: #F0E6C8 !important;
+    }
+    .leaflet-bar { border: none !important; box-shadow: 3px 3px 0 #1A1208 !important; }
+  </style>
 
 </BaseLayout>

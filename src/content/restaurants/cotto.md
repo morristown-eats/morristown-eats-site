@@ -9,6 +9,8 @@ price: "$$$"
 ownership: "local_group"
 
 address: "90 South St, Morristown, NJ 07960"
+lat: 40.7951
+lng: -74.4806
 phone: ""
 website: "https://www.dinecotto.com/"
 reservations: "resy"

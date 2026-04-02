@@ -9,6 +9,8 @@ price: "$$"
 ownership: "independent"
 
 address: "78 Speedwell Ave, Morristown, NJ 07960"
+lat: 40.7961
+lng: -74.4745
 phone: "(973) 538-3330"
 website: "https://cheffredystable.com"
 reservations: "opentable"

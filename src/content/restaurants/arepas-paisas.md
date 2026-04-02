@@ -9,6 +9,8 @@ price: "$"
 ownership: "independent"
 
 address: "116 Speedwell Ave, Morristown, NJ 07960"
+lat: 40.7973
+lng: -74.4739
 phone: "(973) 644-3442"
 website: "https://www.arepaspaisasmorristown.com/"
 reservations: "none"

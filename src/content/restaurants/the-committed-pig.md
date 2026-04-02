@@ -9,6 +9,8 @@ price: "$$"
 ownership: "local_group"
 
 address: "28 W Park Pl, Morristown, NJ 07960"
+lat: 40.7983
+lng: -74.4822
 phone: "(862) 260-9292"
 website: "https://www.thecommittedpig.com/"
 reservations: "none"

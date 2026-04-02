@@ -9,6 +9,8 @@ price: "$$"
 ownership: "local_group"
 
 address: "56 South St, Morristown, NJ 07960"
+lat: 40.7947
+lng: -74.4805
 phone: "(973) 998-8061"
 website: "https://oralemk.com/"
 reservations: "opentable"

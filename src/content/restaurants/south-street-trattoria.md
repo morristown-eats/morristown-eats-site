@@ -9,6 +9,8 @@ price: "$$"
 ownership: "independent"
 
 address: ""
+lat: 40.7951
+lng: -74.4806
 phone: ""
 website: ""
 reservations: "walk-in"

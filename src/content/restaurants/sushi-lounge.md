@@ -9,6 +9,8 @@ price: "$$$"
 ownership: "local_group"
 
 address: "9 Speedwell Ave, Morristown, NJ 07960"
+lat: 40.7989
+lng: -74.4762
 phone: "(973) 540-1500"
 website: "https://morristown.sushiloungenj.com/"
 reservations: "opentable"

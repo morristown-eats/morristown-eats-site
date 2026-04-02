@@ -9,6 +9,8 @@ price: "$$$"
 ownership: "independent"
 
 address: "88 South Street, Morristown, NJ 07960"
+lat: 40.7952
+lng: -74.4805
 phone: ""
 website: "https://southandpine.com"
 reservations: "opentable"

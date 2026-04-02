@@ -9,6 +9,8 @@ price: "$"
 ownership: "independent"
 
 address: "70 Speedwell Ave, Morristown, NJ 07960"
+lat: 40.7958
+lng: -74.4742
 phone: "(973) 988-3054"
 website: "https://ethanandthebean.com/"
 reservations: "none"

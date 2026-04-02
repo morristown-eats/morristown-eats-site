@@ -40,6 +40,8 @@ const restaurants = defineCollection({
 
     // Location
     address: z.string(),
+    lat: z.number().optional(),
+    lng: z.number().optional(),
     phone: z.string().optional(),
     website: z.string().optional(),
     reservations: z.enum(['opentable', 'resy', 'phone', 'walk-in', 'none']).optional(),

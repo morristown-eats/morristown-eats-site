@@ -9,6 +9,8 @@ price: "$"
 ownership: "local_group"
 
 address: "151 Morris St, Morristown, NJ 07960"
+lat: 40.7964
+lng: -74.4778
 phone: "(973) 998-7888"
 website: "https://junglejuicenj.com/"
 reservations: "none"

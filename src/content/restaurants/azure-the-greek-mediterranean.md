@@ -9,6 +9,8 @@ price: "$$"
 ownership: "independent"
 
 address: "3 Pine St, Morristown, NJ 07960"
+lat: 40.7981
+lng: -74.4821
 phone: "(973) 998-9555"
 website: "https://azurethegreek.com/"
 reservations: "resy"

@@ -9,6 +9,8 @@ price: "$"
 ownership: "independent"
 
 address: "98 Elm St, Morristown, NJ 07960"
+lat: 40.7983
+lng: -74.4817
 phone: "(973) 267-9888"
 website: "https://saigonsubscafe.com/"
 reservations: "walk-in"

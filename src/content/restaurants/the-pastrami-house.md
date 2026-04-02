@@ -9,6 +9,8 @@ price: "$"
 ownership: "local_group"
 
 address: "82 Speedwell Ave, Morristown, NJ 07960"
+lat: 40.7963
+lng: -74.4748
 phone: "(973) 327-9473"
 website: "https://pastramihousedelicatessen.com/"
 reservations: "none"

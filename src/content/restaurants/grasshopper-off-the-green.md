@@ -9,6 +9,8 @@ price: "$$"
 ownership: "local_group"
 
 address: "41-43 Morris St, Morristown, NJ 07960"
+lat: 40.7977
+lng: -74.4794
 phone: "(973) 285-5150"
 website: "https://grasshoppermorristown.com/"
 reservations: "none"

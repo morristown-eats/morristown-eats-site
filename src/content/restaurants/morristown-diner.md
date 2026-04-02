@@ -9,6 +9,8 @@ price: "$"
 ownership: "independent"
 
 address: "73 Morris St, Morristown, NJ 07960"
+lat: 40.7974
+lng: -74.4795
 phone: "(973) 538-0228"
 website: "https://morristowndiner.net/"
 reservations: "walk-in"

@@ -9,6 +9,8 @@ price: "$$$"
 ownership: "independent"
 
 address: "2 Whippany Rd, Morristown, NJ 07960"
+lat: 40.799
+lng: -74.4815
 phone: "(973) 451-2619"
 website: "https://www.bluemorel.com/"
 reservations: "opentable"

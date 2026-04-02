@@ -9,6 +9,8 @@ price: "$"
 ownership: "independent"
 
 address: "80 South St, Morristown, NJ 07960"
+lat: 40.795
+lng: -74.4807
 phone: "(973) 500-3634"
 website: "https://www.myloklcafe.com/"
 reservations: "none"

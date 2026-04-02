@@ -9,6 +9,8 @@ price: "$$"
 ownership: "independent"
 
 address: "84 Speedwell Ave, Morristown, NJ 07960"
+lat: 40.7963
+lng: -74.4746
 phone: "(973) 889-8884"
 website: "https://marjanpersiangrill.com"
 reservations: "opentable"

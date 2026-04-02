@@ -9,6 +9,8 @@ price: "$"
 ownership: "independent"
 
 address: "11 South Street, Morristown, NJ 07960"
+lat: 40.7943
+lng: -74.4808
 phone: "(973) 723-9430"
 website: "https://coniglios.com"
 reservations: "walk-in"

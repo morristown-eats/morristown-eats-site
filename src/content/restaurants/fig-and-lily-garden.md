@@ -9,6 +9,8 @@ price: "$$$"
 ownership: "independent"
 
 address: "2 Cattano Ave, Morristown, NJ 07960"
+lat: 40.7985
+lng: -74.4826
 phone: "(973) 539-3999"
 website: "https://figandlilygarden.com/"
 reservations: "opentable"

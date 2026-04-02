@@ -9,6 +9,8 @@ price: "$$$"
 ownership: "independent"
 
 address: "50 South St, Morristown, NJ 07960"
+lat: 40.7945
+lng: -74.4808
 phone: "(973) 993-1944"
 website: "https://pavesinj.com/"
 reservations: "opentable"

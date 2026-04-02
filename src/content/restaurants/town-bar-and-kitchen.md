@@ -9,6 +9,8 @@ price: "$$$"
 ownership: "local_group"
 
 address: "80 Elm St, Morristown, NJ 07960"
+lat: 40.7982
+lng: -74.4817
 phone: "(973) 889-8696"
 website: "https://www.townbarandkitchen.com/"
 reservations: "resy"

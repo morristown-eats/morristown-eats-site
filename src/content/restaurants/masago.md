@@ -9,6 +9,8 @@ price: "$$"
 ownership: "independent"
 
 address: "39 Washington Street, Morristown, NJ 07960"
+lat: 40.7967
+lng: -74.4838
 phone: "(973) 539-2999"
 website: "https://masagojapanese.com"
 reservations: "phone"

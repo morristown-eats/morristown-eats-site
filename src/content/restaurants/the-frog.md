@@ -9,6 +9,8 @@ price: "$$"
 ownership: "independent"
 
 address: "18 Washington St, Morristown, NJ 07960"
+lat: 40.7966
+lng: -74.4839
 phone: "(973) 540-9601"
 website: "https://famishedfrog.com/"
 reservations: "opentable"

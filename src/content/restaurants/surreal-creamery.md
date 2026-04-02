@@ -9,6 +9,8 @@ price: "$"
 ownership: "independent"
 
 address: "5 Washington St, Morristown, NJ 07960"
+lat: 40.7988
+lng: -74.4831
 phone: ""
 website: "https://www.surrealcreamery.com/"
 reservations: "none"

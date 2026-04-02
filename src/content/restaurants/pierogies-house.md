@@ -9,6 +9,8 @@ price: "$"
 ownership: "independent"
 
 address: "145 Morris Street, Morristown, NJ 07960"
+lat: 40.7961
+lng: -74.4779
 phone: "(973) 432-8270"
 website: "https://pierogieshouse.com"
 reservations: "phone"

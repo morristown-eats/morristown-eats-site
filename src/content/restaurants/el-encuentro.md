@@ -9,6 +9,8 @@ price: "$"
 ownership: "independent"
 
 address: "30 Lafayette Ave, Morristown, NJ 07960"
+lat: 40.7938
+lng: -74.4792
 phone: "(973) 285-9222"
 website: "https://elencuentrocentroamericano.shop/"
 reservations: "none"

@@ -9,6 +9,8 @@ price: "$$"
 ownership: "independent"
 
 address: "9 Speedwell Ave, Morristown, NJ 07960"
+lat: 40.7989
+lng: -74.4762
 phone: ""
 website: "https://parksidenj.com/"
 reservations: "opentable"

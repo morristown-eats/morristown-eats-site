@@ -9,6 +9,8 @@ price: "$$$"
 ownership: "independent"
 
 address: "1 Convent Road, Morristown, NJ 07960"
+lat: 40.7992
+lng: -74.4812
 phone: "(973) 539-6666"
 website: "https://www.rodssteak.com/"
 reservations: "opentable"

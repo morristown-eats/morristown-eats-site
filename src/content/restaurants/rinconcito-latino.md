@@ -9,6 +9,8 @@ price: "$"
 ownership: "independent"
 
 address: "94 Elm St, Morristown, NJ 07960"
+lat: 40.7984
+lng: -74.4818
 phone: "(973) 270-0121"
 website: "https://rinconcito-latino.com/"
 reservations: "none"

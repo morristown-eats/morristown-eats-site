@@ -9,6 +9,8 @@ price: "$"
 ownership: "independent"
 
 address: "64 South Street, Morristown, NJ 07960"
+lat: 40.7946
+lng: -74.4803
 phone: "(973) 590-2100"
 website: "https://danbakery.us"
 reservations: "walk-in"

@@ -9,6 +9,8 @@ price: "$$"
 ownership: "local_group"
 
 address: "150 South St, Morristown, NJ 07960"
+lat: 40.7934
+lng: -74.4797
 phone: "(973) 993-8066"
 website: "https://www.stirlingtavern.com/"
 reservations: "resy"

@@ -9,6 +9,8 @@ price: "$$"
 ownership: "independent"
 
 address: "29 Washington Street, Morristown, NJ 07960"
+lat: 40.7969
+lng: -74.4836
 phone: "(973) 888-9393"
 website: "https://ju-ichi.com"
 reservations: "phone"

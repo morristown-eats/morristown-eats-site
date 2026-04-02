@@ -9,6 +9,8 @@ price: "$"
 ownership: "regional_chain"
 
 address: "52 South St, Morristown, NJ 07960"
+lat: 40.7946
+lng: -74.4807
 phone: "(877) 340-1645"
 website: "https://tacoria.com/"
 reservations: "none"

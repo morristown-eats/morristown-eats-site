@@ -9,6 +9,8 @@ price: "$$$"
 ownership: "independent"
 
 address: "100 Morris St, Morristown, NJ 07960"
+lat: 40.7972
+lng: -74.4789
 phone: "(973) 750-0999"
 website: "https://themorrisproper.com"
 reservations: "opentable"
