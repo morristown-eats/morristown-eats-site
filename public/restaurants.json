@@ -1,0 +1,661 @@
+[
+  {
+    "slug": "arepas-paisas",
+    "name": "Arepas Paisas",
+    "one_liner": "Colombian arepas on Speedwell's Latin row. The real deal.",
+    "price": "$",
+    "neighborhood": "speedwell",
+    "ownership": "independent",
+    "byob": false,
+    "cuisine": [
+      "colombian",
+      "latin-american"
+    ],
+    "visit_status": "fact-shell",
+    "address": "116 Speedwell Ave, Morristown, NJ 07960",
+    "lat": 40.7973,
+    "lng": -74.4739
+  },
+  {
+    "slug": "azure-the-greek-mediterranean",
+    "name": "Azure The Greek Mediterranean",
+    "one_liner": "Greek-Mediterranean on Pine Street. BYOB. The blue-and-white room stands out in a town full of American menus.",
+    "price": "$$",
+    "neighborhood": "the-green",
+    "ownership": "independent",
+    "byob": true,
+    "cuisine": [
+      "greek",
+      "mediterranean"
+    ],
+    "visit_status": "fact-shell",
+    "address": "3 Pine St, Morristown, NJ 07960",
+    "lat": 40.7981,
+    "lng": -74.4821
+  },
+  {
+    "slug": "blue-morel",
+    "name": "Blue Morel",
+    "one_liner": "Hotel restaurant inside the Westin Governor Morris. New American farm-to-table. Not where you go on a Tuesday \u2014 but worth it for a big occasion.",
+    "price": "$$$",
+    "neighborhood": "the-green",
+    "ownership": "independent",
+    "byob": false,
+    "cuisine": [
+      "new-american"
+    ],
+    "visit_status": "fact-shell",
+    "address": "2 Whippany Rd, Morristown, NJ 07960",
+    "lat": 40.799,
+    "lng": -74.4815
+  },
+  {
+    "slug": "chef-fredys-table",
+    "name": "Chef Fredy's Table",
+    "one_liner": "El Salvadoran. Personal menu. Everything cooked to order.",
+    "price": "$$",
+    "neighborhood": "speedwell",
+    "ownership": "independent",
+    "byob": true,
+    "cuisine": [
+      "salvadoran"
+    ],
+    "visit_status": "pending",
+    "address": "78 Speedwell Ave, Morristown, NJ 07960",
+    "lat": 40.7961,
+    "lng": -74.4745
+  },
+  {
+    "slug": "coniglios",
+    "name": "Coniglio's Old Fashioned",
+    "one_liner": "~200 pizzas a day. 2023 NJ Pizza Bowl winner. Cash only.",
+    "price": "$",
+    "neighborhood": "south-street",
+    "ownership": "independent",
+    "byob": true,
+    "cuisine": [
+      "pizza"
+    ],
+    "visit_status": "visited",
+    "address": "11 South Street, Morristown, NJ 07960",
+    "lat": 40.7943,
+    "lng": -74.4808
+  },
+  {
+    "slug": "cotto",
+    "name": "Cotto",
+    "one_liner": "Opened December 2025. Ex-Michelin chef Jordan Petriello. Handmade pasta with imported Italian flour, house-churned gelato. BYOB. The most significant opening South Street has seen in years.",
+    "price": "$$$",
+    "neighborhood": "south-street",
+    "ownership": "local_group",
+    "byob": true,
+    "cuisine": [
+      "italian"
+    ],
+    "visit_status": "fact-shell",
+    "address": "90 South St, Morristown, NJ 07960",
+    "lat": 40.7951,
+    "lng": -74.4806
+  },
+  {
+    "slug": "dan-bakery",
+    "name": "D\u00e4n Bakery & Caf\u00e9",
+    "one_liner": "Central Asian pastry on South Street. The Honey Cake is why people line up. Handcrafted daily, European and Central Asian traditions.",
+    "price": "$",
+    "neighborhood": "south-street",
+    "ownership": "independent",
+    "byob": false,
+    "cuisine": [
+      "bakery-pastry",
+      "cafe-coffee"
+    ],
+    "visit_status": "pending",
+    "address": "64 South Street, Morristown, NJ 07960",
+    "lat": 40.7946,
+    "lng": -74.4803
+  },
+  {
+    "slug": "el-encuentro",
+    "name": "El Encuentro Centro Americano",
+    "one_liner": "Open at 5 AM. Honduran and Central American home cooking. Buffet-style, most entr\u00e9es under $20, in business since 2003.",
+    "price": "$",
+    "neighborhood": "speedwell",
+    "ownership": "independent",
+    "byob": false,
+    "cuisine": [
+      "central-american",
+      "latin-american"
+    ],
+    "visit_status": "fact-shell",
+    "address": "30 Lafayette Ave, Morristown, NJ 07960",
+    "lat": 40.7938,
+    "lng": -74.4792
+  },
+  {
+    "slug": "end-of-elm",
+    "name": "End of Elm",
+    "one_liner": "The original Morristown gastropub. Craft cocktails, neighborhood crowd, happy hour that actually delivers.",
+    "price": "$$",
+    "neighborhood": "morris-street",
+    "ownership": "independent",
+    "byob": false,
+    "cuisine": [
+      "american",
+      "bar"
+    ],
+    "visit_status": "visited",
+    "address": "140 Morris St, Morristown, NJ 07960",
+    "lat": 40.7978,
+    "lng": -74.4783
+  },
+  {
+    "slug": "ethan-and-the-bean",
+    "name": "Ethan and the Bean",
+    "one_liner": "Non-profit caf\u00e9 on Speedwell. Employs adults with developmental disabilities. Ethically sourced beans, outdoor tables.",
+    "price": "$",
+    "neighborhood": "speedwell",
+    "ownership": "independent",
+    "byob": false,
+    "cuisine": [
+      "coffee",
+      "cafe"
+    ],
+    "visit_status": "visited",
+    "address": "70 Speedwell Ave, Morristown, NJ 07960",
+    "lat": 40.7958,
+    "lng": -74.4742
+  },
+  {
+    "slug": "fig-and-lily-garden",
+    "name": "Fig & Lily Garden",
+    "one_liner": "BYOB Mediterranean with a garden patio. Cattano Ave, off the Green. Charcoal-grilled meats, hand-selected produce. One of the nicest outdoor dining spots in town.",
+    "price": "$$$",
+    "neighborhood": "the-green",
+    "ownership": "independent",
+    "byob": true,
+    "cuisine": [
+      "mediterranean"
+    ],
+    "visit_status": "visited",
+    "address": "2 Cattano Ave, Morristown, NJ 07960",
+    "lat": 40.7985,
+    "lng": -74.4826
+  },
+  {
+    "slug": "grasshopper-off-the-green",
+    "name": "Grasshopper Off the Green",
+    "one_liner": "Three-story Irish pub on Morris Street. Live bands, karaoke, DJ. Four NJ locations. The place for a big group night out.",
+    "price": "$$",
+    "neighborhood": "morris-street",
+    "ownership": "local_group",
+    "byob": false,
+    "cuisine": [
+      "american",
+      "bar"
+    ],
+    "visit_status": "fact-shell",
+    "address": "41-43 Morris St, Morristown, NJ 07960",
+    "lat": 40.7977,
+    "lng": -74.4794
+  },
+  {
+    "slug": "ju-ichi",
+    "name": "Ju-Ichi Japanese Restaurant",
+    "one_liner": "The fuller Japanese menu down the block from Masago \u2014 bone broth ramen, udon, donburi, and BYOB.",
+    "price": "$$",
+    "neighborhood": "washington-street",
+    "ownership": "independent",
+    "byob": true,
+    "cuisine": [
+      "japanese"
+    ],
+    "visit_status": "visited",
+    "address": "29 Washington Street, Morristown, NJ 07960",
+    "lat": 40.7969,
+    "lng": -74.4836
+  },
+  {
+    "slug": "jungle-juice",
+    "name": "Jungle Juice",
+    "one_liner": "Made-to-order smoothies, juices, acai bowls. Morris Street. Family-owned since 2010. Three NJ locations.",
+    "price": "$",
+    "neighborhood": "morris-street",
+    "ownership": "local_group",
+    "byob": false,
+    "cuisine": [
+      "juice-smoothies"
+    ],
+    "visit_status": "visited",
+    "address": "151 Morris St, Morristown, NJ 07960",
+    "lat": 40.7964,
+    "lng": -74.4778
+  },
+  {
+    "slug": "kirshenbaum-baking-co",
+    "name": "Kirshenbaum Baking Co",
+    "one_liner": "Paris-trained pastry chef, Schuyler Place. Croissants, cookies, breakfast sandwiches on house-baked bread. The Westfield location has been around longer but this one's yours.",
+    "price": "$",
+    "neighborhood": "the-green",
+    "ownership": "local_group",
+    "byob": false,
+    "cuisine": [
+      "bakery",
+      "cafe"
+    ],
+    "visit_status": "visited",
+    "address": "22 Schuyler Place, Morristown, NJ 07960",
+    "lat": 40.7989,
+    "lng": -74.4819
+  },
+  {
+    "slug": "lins-palace",
+    "name": "Lin's Palace",
+    "one_liner": "Family-run Taiwanese and Chinese on Speedwell. 40+ years. The Taiwanese sausage fried rice is what you come for.",
+    "price": "$$",
+    "neighborhood": "speedwell",
+    "ownership": "independent",
+    "byob": false,
+    "cuisine": [
+      "taiwanese",
+      "chinese"
+    ],
+    "visit_status": "visited",
+    "address": "40 Speedwell Ave, Morristown, NJ 07960",
+    "lat": 40.7952,
+    "lng": -74.4751
+  },
+  {
+    "slug": "lokl-cafe",
+    "name": "Lokl Cafe",
+    "one_liner": "Direct-trade coffee on South Street. Outdoor patio, handcrafted espresso. The kind of coffee shop South Street needed.",
+    "price": "$",
+    "neighborhood": "south-street",
+    "ownership": "independent",
+    "byob": false,
+    "cuisine": [
+      "cafe"
+    ],
+    "visit_status": "visited",
+    "address": "80 South St, Morristown, NJ 07960",
+    "lat": 40.795,
+    "lng": -74.4807
+  },
+  {
+    "slug": "marjan",
+    "name": "Marjan Fine Persian Grill",
+    "one_liner": "Morristown's only Persian restaurant. Kebabs, stews, saffron rice.",
+    "price": "$$",
+    "neighborhood": "speedwell",
+    "ownership": "independent",
+    "byob": true,
+    "cuisine": [
+      "persian"
+    ],
+    "visit_status": "visited",
+    "address": "84 Speedwell Ave, Morristown, NJ 07960",
+    "lat": 40.7963,
+    "lng": -74.4746
+  },
+  {
+    "slug": "masago",
+    "name": "Masago Japanese Cuisine",
+    "one_liner": "BYOB sushi. The Friday night default for half the town.",
+    "price": "$$",
+    "neighborhood": "washington-street",
+    "ownership": "independent",
+    "byob": true,
+    "cuisine": [
+      "japanese",
+      "sushi"
+    ],
+    "visit_status": "pending",
+    "address": "39 Washington Street, Morristown, NJ 07960",
+    "lat": 40.7967,
+    "lng": -74.4838
+  },
+  {
+    "slug": "morristown-bagel",
+    "name": "Morristown Bagel and Deli",
+    "one_liner": "Open since 1950. Same counter, same morning.",
+    "price": "$",
+    "neighborhood": "morris-street",
+    "ownership": "independent",
+    "byob": false,
+    "cuisine": [
+      "deli-bagels"
+    ],
+    "visit_status": "visited",
+    "address": "121 Morris Street, Morristown, NJ 07960",
+    "lat": 40.7971,
+    "lng": -74.4772
+  },
+  {
+    "slug": "morristown-diner",
+    "name": "Morristown Diner",
+    "one_liner": "Family-owned since 1994. Chrome, red booths, omelets, burgers. Open until 2 AM. The place that's always there.",
+    "price": "$",
+    "neighborhood": "morris-street",
+    "ownership": "independent",
+    "byob": false,
+    "cuisine": [
+      "diner"
+    ],
+    "visit_status": "fact-shell",
+    "address": "73 Morris St, Morristown, NJ 07960",
+    "lat": 40.7974,
+    "lng": -74.4795
+  },
+  {
+    "slug": "orale-mexican-kitchen",
+    "name": "Orale Mexican Kitchen",
+    "one_liner": "Bold Mexican-American with strong daily-flavor frozen margs. The comps alone are worth the trip.",
+    "price": "$$",
+    "neighborhood": "south-street",
+    "ownership": "local_group",
+    "byob": false,
+    "cuisine": [
+      "mexican"
+    ],
+    "visit_status": "visited",
+    "address": "56 South St, Morristown, NJ 07960",
+    "lat": 40.7947,
+    "lng": -74.4805
+  },
+  {
+    "slug": "parkside-tavern",
+    "name": "Parkside Tavern",
+    "one_liner": "Opened October 2024. Old-world tavern inside HQ Plaza. Serious whiskey selection, craft cocktails. The newer sibling to Sushi Lounge.",
+    "price": "$$",
+    "neighborhood": "hq-plaza",
+    "ownership": "independent",
+    "byob": false,
+    "cuisine": [
+      "american",
+      "pub"
+    ],
+    "visit_status": "visited",
+    "address": "9 Speedwell Ave, Morristown, NJ 07960",
+    "lat": 40.7989,
+    "lng": -74.4762
+  },
+  {
+    "slug": "pavesi-ristorante",
+    "name": "Pavesi Ristorante",
+    "one_liner": "Multi-level Italian on South Street. BYOB, no corkage fee. Heated patio, live guitar some nights. Homemade pasta, serious seafood.",
+    "price": "$$$",
+    "neighborhood": "south-street",
+    "ownership": "independent",
+    "byob": true,
+    "cuisine": [
+      "italian"
+    ],
+    "visit_status": "fact-shell",
+    "address": "50 South St, Morristown, NJ 07960",
+    "lat": 40.7945,
+    "lng": -74.4808
+  },
+  {
+    "slug": "pierogies-house",
+    "name": "Pierogies House",
+    "one_liner": "Evelina makes everything herself. Her grandmother Julia's recipes.",
+    "price": "$",
+    "neighborhood": "morris-street",
+    "ownership": "independent",
+    "byob": false,
+    "cuisine": [
+      "eastern-european"
+    ],
+    "visit_status": "visited",
+    "address": "145 Morris Street, Morristown, NJ 07960",
+    "lat": 40.7961,
+    "lng": -74.4779
+  },
+  {
+    "slug": "rinconcito-latino",
+    "name": "Rinconcito Latino",
+    "one_liner": "Pupusas, rice, beans, tostones. Elm Street. Home cooking, big portions, open early, costs nothing.",
+    "price": "$",
+    "neighborhood": "the-green",
+    "ownership": "independent",
+    "byob": false,
+    "cuisine": [
+      "latin-american",
+      "salvadoran"
+    ],
+    "visit_status": "fact-shell",
+    "address": "94 Elm St, Morristown, NJ 07960",
+    "lat": 40.7984,
+    "lng": -74.4818
+  },
+  {
+    "slug": "rods-steak-and-seafood-grille",
+    "name": "Rod's Steak & Seafood Grille",
+    "one_liner": "Morristown's old-money steakhouse. Madison Hotel. Open since 1951. Tablecloths, proper cocktails, serious cuts.",
+    "price": "$$$",
+    "neighborhood": "the-green",
+    "ownership": "independent",
+    "byob": false,
+    "cuisine": [
+      "steakhouse"
+    ],
+    "visit_status": "fact-shell",
+    "address": "1 Convent Road, Morristown, NJ 07960",
+    "lat": 40.7992,
+    "lng": -74.4812
+  },
+  {
+    "slug": "saigon-subs",
+    "name": "Saigon Subs & Caf\u00e9",
+    "one_liner": "The best sandwich in Morristown. Vietnamese banh mi and iced coffee so strong it'll rearrange your afternoon.",
+    "price": "$",
+    "neighborhood": "morris-street",
+    "ownership": "independent",
+    "byob": false,
+    "cuisine": [
+      "vietnamese"
+    ],
+    "visit_status": "visited",
+    "address": "98 Elm St, Morristown, NJ 07960",
+    "lat": 40.7983,
+    "lng": -74.4817
+  },
+  {
+    "slug": "south-and-pine",
+    "name": "South + Pine American Eatery",
+    "one_liner": "Leia Gaccione. Five Iron Chef appearances. BYOB patio, small room. One of the best reasons to live here.",
+    "price": "$$$",
+    "neighborhood": "south-street",
+    "ownership": "independent",
+    "byob": true,
+    "cuisine": [
+      "new-american"
+    ],
+    "visit_status": "visited",
+    "address": "88 South Street, Morristown, NJ 07960",
+    "lat": 40.7952,
+    "lng": -74.4805
+  },
+  {
+    "slug": "stirling-tavern",
+    "name": "Stirling Tavern",
+    "one_liner": "American tavern at the south end of South Street. Full bar, specialty cocktails. Part of the Stirling Restaurant Group (same as Cotto).",
+    "price": "$$",
+    "neighborhood": "south-street",
+    "ownership": "local_group",
+    "byob": false,
+    "cuisine": [
+      "american",
+      "pub"
+    ],
+    "visit_status": "visited",
+    "address": "150 South St, Morristown, NJ 07960",
+    "lat": 40.7934,
+    "lng": -74.4797
+  },
+  {
+    "slug": "surreal-creamery",
+    "name": "Surreal Creamery",
+    "one_liner": "Artisanal soft serve in mason jars. Washington Street. Matcha, taro, unique flavors. Bubble tea too.",
+    "price": "$",
+    "neighborhood": "washington-street",
+    "ownership": "independent",
+    "byob": false,
+    "cuisine": [
+      "ice-cream",
+      "dessert"
+    ],
+    "visit_status": "visited",
+    "address": "5 Washington St, Morristown, NJ 07960",
+    "lat": 40.7988,
+    "lng": -74.4831
+  },
+  {
+    "slug": "sushi-lounge",
+    "name": "Sushi Lounge",
+    "one_liner": "Full bar, DJ nights, hibachi. HQ Plaza. Not your quiet neighborhood sushi \u2014 a night out. NJ Monthly 'Best Sushi' award.",
+    "price": "$$$",
+    "neighborhood": "hq-plaza",
+    "ownership": "local_group",
+    "byob": false,
+    "cuisine": [
+      "japanese",
+      "sushi"
+    ],
+    "visit_status": "visited",
+    "address": "9 Speedwell Ave, Morristown, NJ 07960",
+    "lat": 40.7989,
+    "lng": -74.4762
+  },
+  {
+    "slug": "tacoria",
+    "name": "Tacoria",
+    "one_liner": "11-location NJ chain but a real one \u2014 counter-service tacos, burritos, bowls. Full vegan menu. Fast, reliable, cheap.",
+    "price": "$",
+    "neighborhood": "south-street",
+    "ownership": "regional_chain",
+    "byob": false,
+    "cuisine": [
+      "mexican"
+    ],
+    "visit_status": "visited",
+    "address": "52 South St, Morristown, NJ 07960",
+    "lat": 40.7946,
+    "lng": -74.4807
+  },
+  {
+    "slug": "tatte",
+    "name": "Tatte Bakery & Caf\u00e9",
+    "one_liner": "Boston chain. Airy room, good coffee, first-come seating. The pistachio latte is the thing.",
+    "price": "$$",
+    "neighborhood": "morris-street",
+    "ownership": "regional_chain",
+    "byob": false,
+    "cuisine": [
+      "cafe",
+      "bakery"
+    ],
+    "visit_status": "visited",
+    "address": "2 Speedwell Ave, Morristown, NJ 07960",
+    "lat": 40.799,
+    "lng": -74.4763
+  },
+  {
+    "slug": "the-address",
+    "name": "The Address",
+    "one_liner": "Greek-Mediterranean. BYOB. Heated patio. Book ahead.",
+    "price": "$$$",
+    "neighborhood": "south-street",
+    "ownership": "independent",
+    "byob": true,
+    "cuisine": [
+      "greek-mediterranean"
+    ],
+    "visit_status": "visited",
+    "address": "20 South Street, Morristown, NJ 07960",
+    "lat": 40.7942,
+    "lng": -74.4811
+  },
+  {
+    "slug": "the-committed-pig",
+    "name": "The Committed Pig",
+    "one_liner": "Award-winning brunch on the Green. Short rib/brisket burger blend. Decadent pancakes. Three NJ locations, this is the original.",
+    "price": "$$",
+    "neighborhood": "the-green",
+    "ownership": "local_group",
+    "byob": false,
+    "cuisine": [
+      "american",
+      "brunch"
+    ],
+    "visit_status": "visited",
+    "address": "28 W Park Pl, Morristown, NJ 07960",
+    "lat": 40.7983,
+    "lng": -74.4822
+  },
+  {
+    "slug": "the-frog",
+    "name": "The Frog",
+    "one_liner": "Three-story bar on Washington Street. The Frog since 2024, Famished Frog before that. Billiards, shuffleboard, craft beer, gluten-free fryer. The 25-year Washington St anchor.",
+    "price": "$$",
+    "neighborhood": "washington-street",
+    "ownership": "independent",
+    "byob": false,
+    "cuisine": [
+      "american",
+      "bar"
+    ],
+    "visit_status": "visited",
+    "address": "18 Washington St, Morristown, NJ 07960",
+    "lat": 40.7966,
+    "lng": -74.4839
+  },
+  {
+    "slug": "the-morris-proper",
+    "name": "The Morris Proper",
+    "one_liner": "Three or four visits in. Still finding things to order.",
+    "price": "$$$",
+    "neighborhood": "morris-street",
+    "ownership": "independent",
+    "byob": false,
+    "cuisine": [
+      "new-american"
+    ],
+    "visit_status": "visited",
+    "address": "100 Morris St, Morristown, NJ 07960",
+    "lat": 40.7972,
+    "lng": -74.4789
+  },
+  {
+    "slug": "the-pastrami-house",
+    "name": "The Pastrami House",
+    "one_liner": "Traditional NY deli on Speedwell. Opened March 2025. Loaded sandwiches, knishes, potato pancakes. Two NJ locations.",
+    "price": "$",
+    "neighborhood": "speedwell",
+    "ownership": "local_group",
+    "byob": false,
+    "cuisine": [
+      "deli",
+      "jewish"
+    ],
+    "visit_status": "fact-shell",
+    "address": "82 Speedwell Ave, Morristown, NJ 07960",
+    "lat": 40.7963,
+    "lng": -74.4748
+  },
+  {
+    "slug": "town-bar-and-kitchen",
+    "name": "TOWN bar + kitchen",
+    "one_liner": "Rooftop fireplace, Resy, globally inspired menu. 40NORTH group. Morristown's version of a destination restaurant that doesn't require a special occasion.",
+    "price": "$$$",
+    "neighborhood": "the-green",
+    "ownership": "local_group",
+    "byob": false,
+    "cuisine": [
+      "american"
+    ],
+    "visit_status": "visited",
+    "address": "80 Elm St, Morristown, NJ 07960",
+    "lat": 40.7982,
+    "lng": -74.4817
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "slug": "2026-03-29-orale-mexican-kitchen",
+    "title": "Orale Mexican Kitchen — Saturday night",
+    "establishment": "Orale Mexican Kitchen",
+    "establishmentSlug": "orale-mexican-kitchen",
+    "date": "2026-03-29",
+    "noteType": "meal_note",
+    "neighborhood": "south-street",
+    "address": "56 South St, Morristown, NJ 07960",
+    "price": "~$20+/plate",
+    "vibeTags": ["new comfort food", "colorful", "bold", "fusion"],
+    "lede": "The frozen margaritas are doing daily flavors now and that alone is worth the walk downtown.",
+    "body": "Family dinner on a Saturday. Blueberry frozen margs to start — bright, strong, not a slushee. Shrimp tacos on purple cabbage slaw with a creamy sauce that had actual range. The move was the comp: plantain shrimp guacamole bites, off-menu, just sent to the table. If they ever make that permanent, order it immediately. The thirteen-year-old reviewed his tacos unprompted: \"Very savory but with a hint of sweet.\" He's not wrong. Paper menus are back. More energy in here than last time. Come on a Friday or Saturday.",
+    "wouldReturn": "absolutely",
+    "bestFor": "Friday dinner, more energy",
+    "images": {
+      "room": "/images/notes/orale-room.jpeg",
+      "plate": "/images/notes/orale-plate.jpeg",
+      "detail": "/images/notes/orale-detail.jpeg"
+    },
+    "published": true
+  },
+  {
+    "slug": "2026-03-28-the-morris-proper",
+    "title": "The Morris Proper — Friday lunch",
+    "establishment": "The Morris Proper",
+    "establishmentSlug": "the-morris-proper",
+    "date": "2026-03-28",
+    "noteType": "meal_note",
+    "neighborhood": "morris-street",
+    "address": "100 Morris St, Morristown, NJ 07960",
+    "price": "$$$",
+    "vibeTags": ["airy", "bar food that went somewhere", "cocktails", "lunch move"],
+    "lede": "Three or four visits in. Still finding things to order.",
+    "body": "Floor-to-ceiling glass on Morris Street, looking out at the roundabout. Big room. Bar in the center. The focaccia is whipped ricotta, market conserva, olive relish — add the prosciutto. The wings are smoked then fried, lime slaw, peanuts, chili fish sauce. Bar food that went somewhere. The crab and jalapeño pasta uses housemade linguine. Cooked right. Sweater Weather at the bar — reposado, blood orange, Cointreau, ginger — order this instead of the Paper Plane. Lunch has a double smashburger. Someone at the bar called it burger hour. Worth coming for specifically.",
+    "wouldReturn": "yes, keep going back",
+    "bestFor": "Lunch, date night, cocktails",
+    "images": {},
+    "published": true
+  }
+]
